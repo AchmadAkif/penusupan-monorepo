@@ -1,26 +1,143 @@
 @import "tailwindcss";
 
+/* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary palette */
+  --color-navy:       #1E1B4B;
+  --color-navy-dark:  #16133A;
+  --color-navy-light: #2D2A6A;
+
+  /* Accent */
+  --color-gold:       #CA8A04;
+  --color-gold-light: #EAB308;
+  --color-gold-pale:  #FEF9C3;
+
+  /* Neutrals */
+  --color-linen:      #FAFAF9;
+  --color-linen-dark: #F5F5F4;
+  --color-stone:      #78716C;
+  --color-stone-dark: #44403C;
+
+  /* Semantic */
+  --background:       var(--color-linen);
+  --foreground:       var(--color-stone-dark);
 }
 
+/* ─── Tailwind Theme Extension ────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts */
+  --font-heading: var(--font-plus-jakarta);
+  --font-body:    var(--font-inter);
+
+  /* Colors */
+  --color-navy:        #1E1B4B;
+  --color-navy-dark:   #16133A;
+  --color-navy-light:  #2D2A6A;
+  --color-gold:        #CA8A04;
+  --color-gold-light:  #EAB308;
+  --color-gold-pale:   #FEF9C3;
+  --color-linen:       #FAFAF9;
+  --color-linen-dark:  #F5F5F4;
+  --color-background:  var(--background);
+  --color-foreground:  var(--foreground);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base Styles ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-navy);
+}
+
+/* ─── Utility Classes ─────────────────────────────────────────── */
+
+/* Hero pattern overlay — subtle noise texture */
+.hero-pattern {
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(202, 138, 4, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(45, 42, 106, 0.4) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Count-up animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating card animation */
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes floatCardAlt {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-6px) rotate(1deg); }
+}
+
+.animate-float {
+  animation: floatCard 4s ease-in-out infinite;
+}
+
+.animate-float-alt {
+  animation: floatCardAlt 5s ease-in-out infinite;
+}
+
+/* Scroll-reveal */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* ─── Scrollbar Styling ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-linen-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C7C3C0;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-stone);
 }

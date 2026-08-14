@@ -1,17 +1,9 @@
-import { createClient } from '@/utils/supabase/server'
-import { cookies } from 'next/headers'
-
-export default async function Page() {
-  const cookieStore = await cookies()
-  const supabase = createClient(cookieStore)
-
-  const { data: articles } = await supabase.from('articles').select('*')
-
+export default function Page() {
   return (
-    <ul>
-      {articles?.map((article) => (
-        <li key={article.id}>{article.title}</li>
-      ))}
-    </ul>
-  )
+    <div className="min-h-[60vh] flex items-center justify-center">
+      <p className="font-body text-stone-400 text-sm">
+        Halaman Beranda — Sub-phase 2B sedang dibangun...
+      </p>
+    </div>
+  );
 }
