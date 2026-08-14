@@ -1,28 +1,12 @@
 import Link from 'next/link';
 import { MapPin, Phone, Mail, Facebook, Instagram, Youtube } from 'lucide-react';
-
-const VILLAGE_INFO = {
-  name:    'Desa Penusupan',
-  tagline: 'Desa yang maju, sejahtera, dan berbudaya',
-  address: 'Jl. Raya Penusupan No. 1',
-  region:  'Kec. Pangkah, Kab. Tegal, Jawa Tengah 52461',
-  phone:   '(0283) 123-4567',
-  email:   'desapenusupan@gmail.com',
-  mapEmbed:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.9!2d109.0!3d-6.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sPenusupan%2C+Pangkah%2C+Tegal!5e0!3m2!1sid!2sid!4v1000000000000',
-};
-
-const NAV_LINKS = [
-  { href: '/',            label: 'Beranda' },
-  { href: '/profile',    label: 'Profil Desa' },
-  { href: '/businesses', label: 'UMKM' },
-  { href: '/news',       label: 'Berita & Pengumuman' },
-];
+import { BrandLogo } from '@/components/BrandLogo';
+import { VILLAGE_INFO, FOOTER_NAV_LINKS } from '@/constants/navigation';
 
 const SOCIAL_LINKS = [
-  { href: '#', icon: Facebook,  label: 'Facebook'  },
+  { href: '#', icon: Facebook, label: 'Facebook' },
   { href: '#', icon: Instagram, label: 'Instagram' },
-  { href: '#', icon: Youtube,   label: 'YouTube'   },
+  { href: '#', icon: Youtube, label: 'YouTube' },
 ];
 
 export default function Footer() {
@@ -31,50 +15,39 @@ export default function Footer() {
   return (
     <footer className="bg-navy text-white">
       {/* ── Top Divider Accent ── */}
-      <div className="h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
+      <div className="h-1 bg-linear-to-r from-gold via-gold-light to-gold" />
 
       {/* ── Main Grid ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
 
-          {/* ── Column 1: Village Identity (2 cols wide) ── */}
-          <div className="lg:col-span-2 space-y-5">
-            {/* Logo / Brand */}
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gold flex items-center justify-center font-heading font-bold text-white text-sm flex-shrink-0">
-                DP
-              </div>
-              <div>
-                <p className="font-heading font-bold text-white text-base leading-tight">
-                  {VILLAGE_INFO.name}
-                </p>
-                <p className="text-white/60 text-xs font-body mt-0.5">
-                  Website Resmi Desa
-                </p>
-              </div>
-            </div>
-
-            <p className="text-white/70 text-sm font-body leading-relaxed max-w-xs">
-              {VILLAGE_INFO.tagline}
-            </p>
+          {/* ── Column 1: Village Identity (4 cols) ── */}
+          <div className="lg:col-span-4 space-y-5">
+            <BrandLogo theme="dark" size="lg" />
 
             {/* Address */}
             <div className="flex items-start gap-2.5 text-white/60 text-sm font-body">
-              <MapPin size={16} className="mt-0.5 flex-shrink-0 text-gold" />
+              <MapPin size={16} className="mt-1 shrink-0 text-gold" />
               <div>
                 <p>{VILLAGE_INFO.address}</p>
                 <p>{VILLAGE_INFO.region}</p>
               </div>
             </div>
+          </div>
 
-            {/* Nav Quick Links */}
-            <nav aria-label="Footer navigation" className="pt-1">
-              <ul className="flex flex-wrap gap-x-5 gap-y-2">
-                {NAV_LINKS.map(({ href, label }) => (
+          {/* ── Column 2: Nav Quick Links (2 cols) ── */}
+          <div className="lg:col-span-2 space-y-4">
+            <h3 className="font-heading font-semibold text-white text-sm uppercase tracking-wider">
+              Jelajahi
+            </h3>
+
+            <nav aria-label="Footer navigation">
+              <ul className="space-y-2.5">
+                {FOOTER_NAV_LINKS.map(({ href, label }) => (
                   <li key={href}>
                     <Link
                       href={href}
-                      className="text-white/55 hover:text-gold text-sm font-body transition-colors duration-150"
+                      className="text-white/65 hover:text-gold text-sm font-body transition-colors duration-150 inline-block hover:translate-x-0.5 transform"
                     >
                       {label}
                     </Link>
@@ -84,8 +57,8 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* ── Column 2: Contact Us ── */}
-          <div className="lg:col-span-1 space-y-5">
+          {/* ── Column 3: Contact Us (3 cols) ── */}
+          <div className="lg:col-span-3 space-y-4">
             <h3 className="font-heading font-semibold text-white text-sm uppercase tracking-wider">
               Hubungi Kami
             </h3>
@@ -93,10 +66,10 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href={`tel:${VILLAGE_INFO.phone}`}
+                  href={VILLAGE_INFO.phone !== '-' ? `tel:${VILLAGE_INFO.phone}` : '#'}
                   className="flex items-center gap-2.5 text-white/65 hover:text-white text-sm font-body transition-colors duration-150 group"
                 >
-                  <Phone size={15} className="flex-shrink-0 text-gold group-hover:scale-110 transition-transform" />
+                  <Phone size={15} className="shrink-0 text-gold group-hover:scale-110 transition-transform" />
                   {VILLAGE_INFO.phone}
                 </a>
               </li>
@@ -105,14 +78,14 @@ export default function Footer() {
                   href={`mailto:${VILLAGE_INFO.email}`}
                   className="flex items-center gap-2.5 text-white/65 hover:text-white text-sm font-body transition-colors duration-150 group"
                 >
-                  <Mail size={15} className="flex-shrink-0 text-gold group-hover:scale-110 transition-transform" />
+                  <Mail size={15} className="shrink-0 text-gold group-hover:scale-110 transition-transform" />
                   {VILLAGE_INFO.email}
                 </a>
               </li>
             </ul>
 
             {/* Social Media */}
-            <div className="pt-1 space-y-3">
+            <div className="pt-2 space-y-2.5">
               <p className="text-white/40 text-xs font-body uppercase tracking-wider">
                 Media Sosial
               </p>
@@ -131,8 +104,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* ── Column 3: Google Maps Embed (2 cols wide) ── */}
-          <div className="lg:col-span-2 space-y-3">
+          {/* ── Column 4: Google Maps Embed (3 cols) ── */}
+          <div className="lg:col-span-3 space-y-4">
             <h3 className="font-heading font-semibold text-white text-sm uppercase tracking-wider">
               Lokasi Kami
             </h3>
@@ -160,7 +133,7 @@ export default function Footer() {
             © {currentYear} {VILLAGE_INFO.name}. Hak Cipta Dilindungi.
           </p>
           <p className="text-white/30 text-xs font-body">
-            Dibangun untuk melayani masyarakat
+            Made with ❤️ by semaian.penusupan
           </p>
         </div>
       </div>
