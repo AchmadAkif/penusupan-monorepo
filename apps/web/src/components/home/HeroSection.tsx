@@ -1,9 +1,9 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import { ArrowRight, Sparkles, MapPin, TrendingUp } from 'lucide-react';
+import { Sparkles, MapPin, TrendingUp } from 'lucide-react';
+import { CTAButton } from '@/components/CTAButton';
 import {
   fadeInUp,
   staggerContainer,
@@ -75,20 +75,20 @@ export function HeroSection({
               variants={fadeInUp}
               className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2"
             >
-              <Link
+              <CTAButton
                 href={primaryCta.href}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-gold hover:bg-gold-light text-navy font-heading font-bold text-sm sm:text-base transition-all duration-200 shadow-lg shadow-gold/20 hover:shadow-gold/30 hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <span>{primaryCta.label}</span>
-                <ArrowRight size={18} />
-              </Link>
+                label={primaryCta.label}
+                variant="primary"
+                size="lg"
+              />
 
-              <Link
+              <CTAButton
                 href={secondaryCta.href}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/20 hover:border-white/30 backdrop-blur-md font-heading font-semibold text-sm sm:text-base transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <span>{secondaryCta.label}</span>
-              </Link>
+                label={secondaryCta.label}
+                variant="glass"
+                size="lg"
+                showIcon={false}
+              />
             </motion.div>
 
             {/* Quick Location / Identity Footnote */}

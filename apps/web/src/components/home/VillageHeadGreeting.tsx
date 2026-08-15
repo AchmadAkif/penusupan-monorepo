@@ -1,10 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'motion/react';
-import { Quote, ArrowRight, Award, Sparkles } from 'lucide-react';
-import { fadeInUp, staggerContainer, scaleIn, slideInLeft } from '@/constants/animation';
+import { Quote, Award, Sparkles } from 'lucide-react';
+import { CTAButton } from '@/components/CTAButton';
+import { fadeInUp, staggerContainer, slideInLeft } from '@/constants/animation';
 
 export interface VillageHeadGreetingProps {
   name?: string;
@@ -150,13 +150,12 @@ export function VillageHeadGreeting({
               </div>
 
               {profileHref && (
-                <Link
+                <CTAButton
                   href={profileHref}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-navy hover:bg-navy-light text-white font-heading font-semibold text-sm transition-all duration-200 shadow-md hover:shadow-lg hover:translate-x-0.5 active:scale-95 shrink-0"
-                >
-                  <span>Profil Lengkap Desa</span>
-                  <ArrowRight size={16} className="text-gold" />
-                </Link>
+                  label="Profil Lengkap Desa"
+                  variant="navy"
+                  size="md"
+                />
               )}
             </motion.div>
 
