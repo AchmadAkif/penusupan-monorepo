@@ -1,0 +1,60 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGradient" x1="400" y1="0" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="60%" stop-color="#2e2b6b" />
+      <stop offset="100%" stop-color="#3b3780" />
+    </linearGradient>
+    <linearGradient id="mountain1" x1="0" y1="200" x2="0" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2d4a53" />
+      <stop offset="100%" stop-color="#182c33" />
+    </linearGradient>
+    <linearGradient id="mountain2" x1="0" y1="250" x2="0" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3f614a" />
+      <stop offset="100%" stop-color="#1c3325" />
+    </linearGradient>
+    <linearGradient id="hills" x1="0" y1="350" x2="0" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4d7c0f" />
+      <stop offset="100%" stop-color="#14532d" />
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="400" cy="220" r="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#ca8a04" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#ca8a04" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="800" height="600" rx="24" fill="url(#skyGradient)" />
+
+  <!-- Sun glow -->
+  <circle cx="400" cy="220" r="90" fill="url(#sunGlow)" />
+  <circle cx="400" cy="220" r="36" fill="#fef08a" opacity="0.9" />
+
+  <!-- Distant Mountain Peaks -->
+  <path d="M120 420 L280 230 L440 420 Z" fill="url(#mountain1)" opacity="0.8" />
+  <path d="M340 420 L520 190 L700 420 Z" fill="url(#mountain1)" opacity="0.8" />
+
+  <!-- Midground Mountains -->
+  <path d="M-40 500 L180 290 L400 500 Z" fill="url(#mountain2)" opacity="0.9" />
+  <path d="M260 500 L480 260 L720 500 Z" fill="url(#mountain2)" opacity="0.9" />
+  <path d="M560 500 L700 320 L840 500 Z" fill="url(#mountain2)" opacity="0.9" />
+
+  <!-- Rice Terraces & Hills -->
+  <path d="M-20 600 C 120 480, 240 520, 420 460 C 600 400, 720 480, 820 440 L820 600 Z" fill="url(#hills)" />
+  <path d="M-20 600 C 180 520, 360 500, 540 540 C 680 570, 760 530, 820 560 L820 600 Z" fill="#14532d" opacity="0.95" />
+
+  <!-- Subtle grid / tech accent -->
+  <circle cx="680" cy="100" r="4" fill="#ca8a04" opacity="0.6" />
+  <circle cx="720" cy="140" r="2" fill="#ffffff" opacity="0.4" />
+  <circle cx="120" cy="120" r="3" fill="#ffffff" opacity="0.5" />
+  <circle cx="180" cy="90" r="2" fill="#ca8a04" opacity="0.6" />
+
+  <!-- Center Badge / Placeholder Tag -->
+  <g transform="translate(320, 510)">
+    <rect width="160" height="36" rx="18" fill="rgba(15, 23, 42, 0.75)" stroke="rgba(255, 255, 255, 0.2)" />
+    <text x="80" y="22" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">
+      Desa Penusupan
+    </text>
+  </g>
+</svg>

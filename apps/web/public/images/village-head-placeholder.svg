@@ -1,0 +1,58 @@
+<svg width="480" height="600" viewBox="0 0 480 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="480" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="50%" stop-color="#2d2a6a" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="goldAura" x1="240" y1="120" x2="240" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ca8a04" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ca8a04" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="attireGrad" x1="240" y1="360" x2="240" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="240" y1="140" x2="240" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fed7aa" />
+      <stop offset="100%" stop-color="#fba868" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="480" height="600" rx="32" fill="url(#bgGrad)" />
+
+  <!-- Ambient Glow -->
+  <circle cx="240" cy="220" r="140" fill="url(#goldAura)" />
+
+  <!-- Decorative Rings -->
+  <circle cx="240" cy="220" r="120" stroke="rgba(202, 138, 4, 0.2)" stroke-width="2" stroke-dasharray="6 6" />
+
+  <!-- Head / Face Silhouette -->
+  <circle cx="240" cy="210" r="64" fill="url(#skinGrad)" />
+  
+  <!-- Hair / Peci / Formal Cap -->
+  <path d="M176 195 C176 160, 200 140, 240 140 C280 140, 304 160, 304 195 Z" fill="#09090b" />
+  <rect x="172" y="190" width="136" height="18" rx="4" fill="#18181b" />
+
+  <!-- Neck -->
+  <path d="M220 260 L260 260 L268 330 L212 330 Z" fill="#fba868" />
+
+  <!-- Collar / Shirt -->
+  <path d="M212 330 L240 370 L268 330 L290 350 L240 400 L190 350 Z" fill="#ffffff" />
+  <!-- Tie -->
+  <path d="M234 370 L246 370 L250 480 L240 500 L230 480 Z" fill="#ca8a04" />
+
+  <!-- Formal Blazer / Attire Silhouette -->
+  <path d="M190 350 L120 440 L80 600 L400 600 L360 440 L290 350 L268 330 L240 370 L212 330 Z" fill="url(#attireGrad)" />
+  
+  <!-- Lapels -->
+  <path d="M190 350 L230 470 L210 470 L160 380 Z" fill="#1e293b" />
+  <path d="M290 350 L250 470 L270 470 L320 380 Z" fill="#1e293b" />
+
+  <!-- Official Pin / Badge -->
+  <circle cx="170" cy="410" r="8" fill="#ca8a04" stroke="#ffffff" stroke-width="1.5" />
+
+  <!-- Subtle Bottom Overlay -->
+  <rect y="460" width="480" height="140" fill="url(#bgGrad)" opacity="0.75" />
+</svg>
