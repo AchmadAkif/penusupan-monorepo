@@ -10,7 +10,7 @@ import {
   staggerContainer,
   scaleIn,
 } from '@/constants/animation';
-import { DEFAULT_HERO_DATA } from '@/constants/seedData';
+import { DEFAULT_HERO_DATA, DEFAULT_VILLAGE_STATS } from '@/constants/seedData';
 import type { HeroSectionProps } from '@/types/home';
 
 export function HeroSection({
@@ -93,8 +93,6 @@ export function HeroSection({
                 <MapPin size={15} className="text-gold" />
                 <span>Kec. Pejawaran, Banjarnegara</span>
               </div>
-              <div className="w-1 h-1 rounded-full bg-white/30" />
-              <span>Ketinggian ± 1.200 mdpl</span>
             </motion.div>
           </motion.div>
 

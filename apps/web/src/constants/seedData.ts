@@ -13,6 +13,9 @@ import {
   Laptop,
   Activity,
   MapPin,
+  Mountain,
+  Trees,
+  Sprout,
 } from 'lucide-react';
 import type {
   StatItem,
@@ -21,6 +24,7 @@ import type {
   VillageProfileData,
   VisionMissionData,
   DemographicSectionData,
+  GeographyMetricItem,
 } from '@/types/home';
 
 // ── 1. Hero Section Default Data ──
@@ -43,15 +47,15 @@ export const DEFAULT_VILLAGE_STATS: StatItem[] = [
   },
   {
     icon: Map,
-    value: '342,5',
+    value: '296',
     label: 'Luas Wilayah',
-    sublabel: 'Hektar persegi',
+    sublabel: 'Hektar total area',
   },
   {
     icon: Home,
-    value: '4 / 22',
+    value: '5',
     label: 'Wilayah Dusun',
-    sublabel: '4 RW & 22 RT',
+    sublabel: '6 RW & 22 RT',
   },
   {
     icon: Store,
@@ -83,9 +87,9 @@ export const DEFAULT_VILLAGE_PROFILE: VillageProfileData = {
   eyebrow: 'Tentang Desa Kami',
   title: 'Mengenal Lebih Dekat Desa Penusupan',
   description:
-    'Terletak di kawasan dataran tinggi Kecamatan Pejawaran, Kabupaten Banjarnegara pada ketinggian ± 1.200 mdpl.',
+    'Terletak di kawasan lembah subur Kecamatan Pejawaran, Kabupaten Banjarnegara pada ketinggian ± 820 mdpl.',
   paragraphs: [
-    'Desa Penusupan memiliki bentang alam perbukitan yang asri dan tanah vulkanik yang subur. Mayoritas penduduk kami bergerak di sektor pertanian komoditas unggulan seperti kentang, kol, cabai, dan tanaman hortikultura lainnya.',
+    'Desa Penusupan memiliki bentang alam lembah perbukitan yang asri dan tanah vulkanik yang subur. Mayoritas wilayah kami berupa lahan pertanian produktif yang menopang ketahanan pangan dan komoditas hortikultura.',
     'Selain kekayaan alamnya, Desa Penusupan kaya akan nilai budaya dan tradisi gotong royong yang terus terjaga secara turun-temurun, berpadu harmonis dengan semangat inovasi dan digitalisasi desa modern.',
   ],
   ctaLabel: 'Lihat Profil Lengkap',
@@ -157,7 +161,7 @@ export const DEFAULT_DEMOGRAPHIC_DATA: DemographicSectionData = {
       label: 'Kepala Keluarga',
       description: 'Rumah tangga aktif tersebar di seluruh wilayah rukun warga.',
       icon: Home,
-      badge: '4 RW',
+      badge: '6 RW',
     },
     {
       id: 'administrative-units',
@@ -179,3 +183,39 @@ export const DEFAULT_DEMOGRAPHIC_DATA: DemographicSectionData = {
   ctaLabel: 'Lihat Data Statistik Lengkap',
   ctaHref: '/profile#demografi',
 };
+
+// ── 7. Geography Section Metrics (Real Village Official Data) ──
+export const DEFAULT_GEOGRAPHY_METRICS: GeographyMetricItem[] = [
+  {
+    id: 'topography-altitude',
+    value: 'Lembah',
+    label: 'Topografi & Elevasi',
+    description: 'Ketinggian ± 820 mdpl dengan bentang alam lembah subur beriklim sejuk.',
+    icon: Mountain,
+    badge: '820 mdpl',
+  },
+  {
+    id: 'total-area',
+    value: '296 Ha',
+    label: 'Luas Wilayah Total',
+    description: 'Total luas wilayah administratif Desa Penusupan di Kecamatan Pejawaran.',
+    icon: Map,
+    badge: 'Administrasi',
+  },
+  {
+    id: 'agriculture-land',
+    value: '296 Ha',
+    label: 'Lahan Pertanian',
+    description: 'Mendominasi tata ruang desa untuk budidaya komoditas hortikultura & pangan.',
+    icon: Sprout,
+    badge: 'Sektor Utama',
+  },
+  {
+    id: 'plantation-land',
+    value: '24 Ha',
+    label: 'Lahan Perkebunan',
+    description: 'Potensi perkebunan produktif masyarakat penunjang ekonomi pedesaan.',
+    icon: Trees,
+    badge: 'Perkebunan',
+  },
+];

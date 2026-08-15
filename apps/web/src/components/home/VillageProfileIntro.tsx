@@ -20,7 +20,7 @@ export function VillageProfileIntro({
     <section className={`py-20 lg:py-28 bg-white overflow-hidden ${className || ''}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* ── Left: Narrative & Description (7 cols) ── */}
           <motion.div
             variants={staggerContainer}
@@ -99,7 +99,7 @@ export function VillageProfileIntro({
                 <div className="absolute inset-0 bg-linear-to-t from-navy/60 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <p className="font-heading font-bold text-sm">Dataran Tinggi Pejawaran</p>
-                  <p className="font-body text-xs text-white/80">Ketinggian ± 1.200 mdpl</p>
+                  <p className="font-body text-xs text-white/80">Ketinggian ± 820 mdpl</p>
                 </div>
               </div>
             </div>

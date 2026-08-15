@@ -85,3 +85,19 @@ export interface DemographicSectionProps {
   data?: DemographicSectionData;
   className?: string;
 }
+
+export interface GeographyMetricItem {
+  id: string;
+  value: string;
+  label: string;
+  description: string;
+  icon: LucideIcon;
+  badge?: string;
+}
+
+export interface GeographySectionProps {
+  metrics?: GeographyMetricItem[];
+  ctaLabel?: string;
+  ctaHref?: string;
+  className?: string;
+}
