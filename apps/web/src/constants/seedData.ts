@@ -11,6 +11,8 @@ import {
   Leaf,
   Handshake,
   Laptop,
+  Activity,
+  MapPin,
 } from 'lucide-react';
 import type {
   StatItem,
@@ -18,6 +20,7 @@ import type {
   VillageHeadGreetingProps,
   VillageProfileData,
   VisionMissionData,
+  DemographicSectionData,
 } from '@/types/home';
 
 // ── 1. Hero Section Default Data ──
@@ -34,9 +37,9 @@ export const DEFAULT_HERO_DATA: Required<HeroSectionProps> = {
 export const DEFAULT_VILLAGE_STATS: StatItem[] = [
   {
     icon: Users,
-    value: '2.850+',
+    value: '4.155',
     label: 'Jumlah Penduduk',
-    sublabel: 'Jiwa terdata',
+    sublabel: 'Jiwa terdata resmi',
   },
   {
     icon: Map,
@@ -46,9 +49,9 @@ export const DEFAULT_VILLAGE_STATS: StatItem[] = [
   },
   {
     icon: Home,
-    value: '4',
+    value: '4 / 22',
     label: 'Wilayah Dusun',
-    sublabel: 'Rukun Warga & RT',
+    sublabel: '4 RW & 22 RT',
   },
   {
     icon: Store,
@@ -135,4 +138,44 @@ export const DEFAULT_VISION_MISSION: VisionMissionData = {
       icon: Laptop,
     },
   ],
+};
+
+// ── 6. Demographics Section Data (Real Village Official Data) ──
+export const DEFAULT_DEMOGRAPHIC_DATA: DemographicSectionData = {
+  metrics: [
+    {
+      id: 'total-population',
+      value: '4.155',
+      label: 'Total Penduduk',
+      description: 'Jiwa penduduk terdaftar resmi dalam catatan kependudukan.',
+      icon: Users,
+      badge: 'Populasi',
+    },
+    {
+      id: 'head-of-household',
+      value: '1.262',
+      label: 'Kepala Keluarga',
+      description: 'Rumah tangga aktif tersebar di seluruh wilayah rukun warga.',
+      icon: Home,
+      badge: '4 RW',
+    },
+    {
+      id: 'administrative-units',
+      value: '22',
+      label: 'Rukun Tetangga (RT)',
+      description: 'Unit rukun tetangga aktif yang menopang kerukunan warga.',
+      icon: MapPin,
+      badge: 'Struktur Desa',
+    },
+    {
+      id: 'health-services',
+      value: '4',
+      label: 'Posyandu Aktif',
+      description: 'Pos pelayanan kesehatan terpadu melayani ibu, bayi & balita.',
+      icon: Activity,
+      badge: 'Layanan Kesehatan',
+    },
+  ],
+  ctaLabel: 'Lihat Data Statistik Lengkap',
+  ctaHref: '/profile#demografi',
 };

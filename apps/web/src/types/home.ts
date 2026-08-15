@@ -65,3 +65,23 @@ export interface VisionMissionSectionProps {
   visionMission?: VisionMissionData;
   className?: string;
 }
+
+export interface DemographicMetricItem {
+  id: string;
+  value: string;
+  label: string;
+  description: string;
+  icon: LucideIcon;
+  badge?: string;
+}
+
+export interface DemographicSectionData {
+  metrics: DemographicMetricItem[];
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+export interface DemographicSectionProps {
+  data?: DemographicSectionData;
+  className?: string;
+}
