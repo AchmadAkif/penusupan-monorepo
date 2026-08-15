@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import { Quote, Award, Sparkles } from 'lucide-react';
+import { Quote, Award } from 'lucide-react';
 import { CTAButton } from '@/components/CTAButton';
+import { Eyebrow } from '@/components/Eyebrow';
 import { fadeInUp, staggerContainer, slideInLeft } from '@/constants/animation';
 import { DEFAULT_VILLAGE_HEAD } from '@/constants/seedData';
 import type { VillageHeadGreetingProps } from '@/types/home';
@@ -87,10 +88,7 @@ export function VillageHeadGreeting({
           >
             {/* Section Eyebrow */}
             <motion.div variants={fadeInUp}>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy/5 border border-navy/10 text-navy text-xs sm:text-sm font-semibold font-body">
-                <Sparkles size={14} className="text-gold" />
-                <span>Sambutan Kepala Desa</span>
-              </div>
+              <Eyebrow label="Sambutan Kepala Desa" variant="navy" />
             </motion.div>
 
             {/* Greeting Main Heading */}

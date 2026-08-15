@@ -30,3 +30,38 @@ export interface VillageHeadGreetingProps {
   signatureText?: string;
   profileHref?: string;
 }
+
+export interface VillageProfileData {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  paragraphs: string[];
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+export interface VillageProfileIntroProps {
+  profile?: VillageProfileData;
+  className?: string;
+}
+
+export interface MissionItem {
+  id: number;
+  text: string;
+  icon: LucideIcon;
+}
+
+export interface MissionCardProps {
+  mission: MissionItem;
+  className?: string;
+}
+
+export interface VisionMissionData {
+  vision: string;
+  missions: MissionItem[];
+}
+
+export interface VisionMissionSectionProps {
+  visionMission?: VisionMissionData;
+  className?: string;
+}

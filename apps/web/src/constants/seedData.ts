@@ -1,8 +1,23 @@
-import { Users, Map, Home, Store } from 'lucide-react';
+import {
+  Users,
+  Map,
+  Home,
+  Store,
+  ShieldCheck,
+  Hammer,
+  TrendingUp,
+  HeartHandshake,
+  Users2,
+  Leaf,
+  Handshake,
+  Laptop,
+} from 'lucide-react';
 import type {
   StatItem,
   HeroSectionProps,
   VillageHeadGreetingProps,
+  VillageProfileData,
+  VisionMissionData,
 } from '@/types/home';
 
 // ── 1. Hero Section Default Data ──
@@ -57,5 +72,67 @@ export const DEFAULT_VILLAGE_HEAD: Required<VillageHeadGreetingProps> = {
     'Puji syukur senantiasa kita panjatkan ke hadirat Tuhan Yang Maha Esa atas limpahan rahmat dan karunia-Nya, sehingga website resmi Desa Penusupan ini dapat hadir sebagai jembatan komunikasi dan keterbukaan informasi publik bagi seluruh warga masyarakat.',
     'Di era transformasi digital ini, kami berkomitmen untuk mewujudkan tata kelola pemerintahan desa yang transparan, akuntabel, dan berorientasi pada pelayanan prima. Website ini dirancang agar masyarakat dapat mengakses layanan administrasi, memantau perkembangan pembangunan desa, serta mengeksplorasi potensi pertanian dan UMKM unggulan kami dengan mudah.',
     'Mari bersama-sama kita satukan tekad dan semangat gotong royong untuk membangun Desa Penusupan yang maju, mandiri, sejahtera, dan senantiasa melestarikan nilai-nilai kearifan lokal.',
+  ],
+};
+
+// ── 4. Village Profile Short Intro ──
+export const DEFAULT_VILLAGE_PROFILE: VillageProfileData = {
+  eyebrow: 'Tentang Desa Kami',
+  title: 'Mengenal Lebih Dekat Desa Penusupan',
+  description:
+    'Terletak di kawasan dataran tinggi Kecamatan Pejawaran, Kabupaten Banjarnegara pada ketinggian ± 1.200 mdpl.',
+  paragraphs: [
+    'Desa Penusupan memiliki bentang alam perbukitan yang asri dan tanah vulkanik yang subur. Mayoritas penduduk kami bergerak di sektor pertanian komoditas unggulan seperti kentang, kol, cabai, dan tanaman hortikultura lainnya.',
+    'Selain kekayaan alamnya, Desa Penusupan kaya akan nilai budaya dan tradisi gotong royong yang terus terjaga secara turun-temurun, berpadu harmonis dengan semangat inovasi dan digitalisasi desa modern.',
+  ],
+  ctaLabel: 'Lihat Profil Lengkap',
+  ctaHref: '/profile',
+};
+
+// ── 5. Village Vision & Mission ──
+export const DEFAULT_VISION_MISSION: VisionMissionData = {
+  vision:
+    'Terwujudnya Desa Penusupan yang Maju, Mandiri, Sejahtera, Religius, Berbudaya, dan Berkelanjutan melalui Tata Kelola Pemerintahan yang Bersih, Transparan, dan Melayani',
+  missions: [
+    {
+      id: 1,
+      text: 'Meningkatkan kualitas tata kelola pemerintahan desa yang profesional, transparan, akuntabel, dan berorientasi pada pelayanan masyarakat.',
+      icon: ShieldCheck,
+    },
+    {
+      id: 2,
+      text: 'Meningkatkan pembangunan infrastruktur desa yang merata, berkualitas, dan berkelanjutan.',
+      icon: Hammer,
+    },
+    {
+      id: 3,
+      text: 'Mengembangkan potensi ekonomi desa melalui pemberdayaan masyarakat, UMKM, pertanian, peternakan, dan sektor unggulan desa.',
+      icon: TrendingUp,
+    },
+    {
+      id: 4,
+      text: 'Meningkatkan kualitas pendidikan, kesehatan, serta kesejahteraan sosial masyarakat.',
+      icon: HeartHandshake,
+    },
+    {
+      id: 5,
+      text: 'Memperkuat nilai-nilai keagamaan, budaya, gotong royong, dan kerukunan dalam kehidupan bermasyarakat.',
+      icon: Users2,
+    },
+    {
+      id: 6,
+      text: 'Meningkatkan pelestarian lingkungan hidup serta pengelolaan sumber daya alam secara bijaksana.',
+      icon: Leaf,
+    },
+    {
+      id: 7,
+      text: 'Mendorong partisipasi aktif masyarakat dalam perencanaan, pelaksanaan, dan pengawasan pembangunan desa.',
+      icon: Handshake,
+    },
+    {
+      id: 8,
+      text: 'Mewujudkan pelayanan publik yang cepat, mudah, ramah, dan berbasis teknologi informasi menuju Desa Digital.',
+      icon: Laptop,
+    },
   ],
 };

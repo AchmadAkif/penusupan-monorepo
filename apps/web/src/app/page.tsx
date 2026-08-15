@@ -1,6 +1,8 @@
 import { HeroSection } from '@/components/home/HeroSection';
 import { StatsBar } from '@/components/home/StatsBar';
 import { VillageHeadGreeting } from '@/components/home/VillageHeadGreeting';
+import { VillageProfileIntro } from '@/components/home/VillageProfileIntro';
+import { VisionMissionSection } from '@/components/home/vision-mission';
 
 export default function HomePage() {
   return (
@@ -14,11 +16,17 @@ export default function HomePage() {
       {/* ── 3. Sambutan Kepala Desa (Head of Village Greeting) ── */}
       <VillageHeadGreeting />
 
+      {/* ── 4. Profil Singkat Desa (Short Profile) ── */}
+      <VillageProfileIntro />
+
+      {/* ── 5. Visi & Misi Desa (Vision & Mission) ── */}
+      <VisionMissionSection />
+
       {/* ── Content placeholder for remaining Home sections (Sub-phase 2B) ── */}
-      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-block p-6 rounded-2xl bg-white/60 border border-stone-200/60 shadow-xs">
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-linen">
+        <div className="inline-block p-6 rounded-2xl bg-white/80 border border-stone-200/80 shadow-xs">
           <p className="font-heading font-semibold text-navy text-base">
-            Sub-phase 2B: Bagian Visi Misi, Potensi & Berita Terkini
+            Sub-phase 2B: Bagian Sekilas Demografi, Geografi, dan Berita Terkini
           </p>
           <p className="font-body text-stone-500 text-xs mt-1">
             Akan dilanjutkan pada langkah berikutnya.

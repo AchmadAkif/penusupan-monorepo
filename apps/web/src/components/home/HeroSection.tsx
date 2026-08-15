@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import { Sparkles, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { CTAButton } from '@/components/CTAButton';
+import { Eyebrow } from '@/components/Eyebrow';
 import {
   fadeInUp,
   staggerContainer,
@@ -40,10 +41,7 @@ export function HeroSection({
               variants={fadeInUp}
               className="flex justify-center lg:justify-start"
             >
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-gold-light text-xs sm:text-sm font-medium font-body shadow-sm">
-                <Sparkles size={14} className="text-gold" />
-                <span>{eyebrow}</span>
-              </div>
+              <Eyebrow label={eyebrow} variant="glass" />
             </motion.div>
 
             {/* Massive Heading */}
