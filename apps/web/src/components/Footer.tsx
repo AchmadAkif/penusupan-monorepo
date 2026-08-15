@@ -1,15 +1,18 @@
 import Link from 'next/link';
-import { MapPin, Phone, Mail, Facebook, Instagram, Youtube } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 import { BrandLogo } from '@/components/BrandLogo';
-import { VILLAGE_INFO, FOOTER_NAV_LINKS } from '@/constants/navigation';
+import {
+  VILLAGE_INFO as DEFAULT_INFO,
+  FOOTER_NAV_LINKS as DEFAULT_NAV_LINKS,
+  SOCIAL_LINKS as DEFAULT_SOCIAL_LINKS,
+} from '@/constants/navigation';
+import type { FooterProps } from '@/types/navigation';
 
-const SOCIAL_LINKS = [
-  { href: '#', icon: Facebook, label: 'Facebook' },
-  { href: '#', icon: Instagram, label: 'Instagram' },
-  { href: '#', icon: Youtube, label: 'YouTube' },
-];
-
-export default function Footer() {
+export function Footer({
+  info = DEFAULT_INFO,
+  navLinks = DEFAULT_NAV_LINKS,
+  socialLinks = DEFAULT_SOCIAL_LINKS,
+}: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -20,7 +23,6 @@ export default function Footer() {
       {/* ── Main Grid ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
-
           {/* ── Column 1: Village Identity (4 cols) ── */}
           <div className="lg:col-span-4 space-y-5">
             <BrandLogo theme="dark" size="lg" />
@@ -29,8 +31,8 @@ export default function Footer() {
             <div className="flex items-start gap-2.5 text-white/60 text-sm font-body">
               <MapPin size={16} className="mt-1 shrink-0 text-gold" />
               <div>
-                <p>{VILLAGE_INFO.address}</p>
-                <p>{VILLAGE_INFO.region}</p>
+                <p>{info.address}</p>
+                <p>{info.region}</p>
               </div>
             </div>
           </div>
@@ -43,7 +45,7 @@ export default function Footer() {
 
             <nav aria-label="Footer navigation">
               <ul className="space-y-2.5">
-                {FOOTER_NAV_LINKS.map(({ href, label }) => (
+                {navLinks.map(({ href, label }) => (
                   <li key={href}>
                     <Link
                       href={href}
@@ -66,20 +68,26 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href={VILLAGE_INFO.phone !== '-' ? `tel:${VILLAGE_INFO.phone}` : '#'}
+                  href={info.phone !== '-' ? `tel:${info.phone}` : '#'}
                   className="flex items-center gap-2.5 text-white/65 hover:text-white text-sm font-body transition-colors duration-150 group"
                 >
-                  <Phone size={15} className="shrink-0 text-gold group-hover:scale-110 transition-transform" />
-                  {VILLAGE_INFO.phone}
+                  <Phone
+                    size={15}
+                    className="shrink-0 text-gold group-hover:scale-110 transition-transform"
+                  />
+                  {info.phone}
                 </a>
               </li>
               <li>
                 <a
-                  href={`mailto:${VILLAGE_INFO.email}`}
+                  href={`mailto:${info.email}`}
                   className="flex items-center gap-2.5 text-white/65 hover:text-white text-sm font-body transition-colors duration-150 group"
                 >
-                  <Mail size={15} className="shrink-0 text-gold group-hover:scale-110 transition-transform" />
-                  {VILLAGE_INFO.email}
+                  <Mail
+                    size={15}
+                    className="shrink-0 text-gold group-hover:scale-110 transition-transform"
+                  />
+                  {info.email}
                 </a>
               </li>
             </ul>
@@ -90,7 +98,7 @@ export default function Footer() {
                 Media Sosial
               </p>
               <div className="flex items-center gap-3">
-                {SOCIAL_LINKS.map(({ href, icon: Icon, label }) => (
+                {socialLinks.map(({ href, icon: Icon, label }) => (
                   <a
                     key={label}
                     href={href}
@@ -109,10 +117,13 @@ export default function Footer() {
             <h3 className="font-heading font-semibold text-white text-sm uppercase tracking-wider">
               Lokasi Kami
             </h3>
-            <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg" style={{ height: '180px' }}>
+            <div
+              className="rounded-xl overflow-hidden border border-white/10 shadow-lg"
+              style={{ height: '180px' }}
+            >
               <iframe
-                title="Peta Lokasi Desa Penusupan"
-                src={VILLAGE_INFO.mapEmbed}
+                title={`Peta Lokasi ${info.name}`}
+                src={info.mapEmbed}
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: 'grayscale(20%) contrast(1.1)' }}
@@ -122,7 +133,6 @@ export default function Footer() {
               />
             </div>
           </div>
-
         </div>
       </div>
 
@@ -130,7 +140,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-white/40 text-xs font-body text-center sm:text-left">
-            © {currentYear} {VILLAGE_INFO.name}. Hak Cipta Dilindungi.
+            © {currentYear} {info.name}. Hak Cipta Dilindungi.
           </p>
           <p className="text-white/30 text-xs font-body">
             Made with ❤️ by semaian.penusupan
@@ -140,3 +150,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;

@@ -1,23 +1,9 @@
-export interface NavLinkItem {
-  href: string;
-  label: string;
-}
-
-export interface VillageConfig {
-  name: string;
-  tagline: string;
-  address: string;
-  region: string;
-  phone: string;
-  email: string;
-  mapEmbed: string;
-}
-
-export interface SocialLinkItem {
-  href: string;
-  name: string;
-  icon: string;
-}
+import { Facebook, Instagram, Youtube } from 'lucide-react';
+import type {
+  NavLinkItem,
+  VillageConfig,
+  SocialLinkItem,
+} from '@/types/navigation';
 
 export const NAV_LINKS: NavLinkItem[] = [
   { href: '/', label: 'Beranda' },
@@ -38,6 +24,12 @@ export const DEFAULT_CTA_LINK: NavLinkItem = {
   label: 'Lihat Berita',
 };
 
+export const SOCIAL_LINKS: SocialLinkItem[] = [
+  { href: '#', icon: Facebook, label: 'Facebook' },
+  { href: '#', icon: Instagram, label: 'Instagram' },
+  { href: '#', icon: Youtube, label: 'YouTube' },
+];
+
 export const VILLAGE_INFO: VillageConfig = {
   name: 'Desa Penusupan',
   tagline: 'Desa yang maju, sejahtera, dan berbudaya',
@@ -45,5 +37,6 @@ export const VILLAGE_INFO: VillageConfig = {
   region: 'Kec. Pejawaran, Kab. Banjarnegara, Jawa Tengah 53454',
   phone: '-',
   email: 'desapenusupan014@gmail.com',
-  mapEmbed: 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15831.800668192936!2d109.796944!3d-7.246512!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e700f2d10fcfe31%3A0xa6a31727a4e1c99f!2sBalai%20Desa%20Panusupan%20Pejawaran!5e0!3m2!1sid!2sid!4v1786688234639!5m2!1sid!2sid'
+  mapEmbed:
+    'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15832.096090734074!2d109.7948854!3d-7.2380989!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e700f2d10fcfe31%3A0xa6a31727a4e1c99f!2sBalai%20Desa%20Panusupan%20Pejawaran!5e0!3m2!1sid!2sid!4v1786763538432!5m2!1sid!2sid',
 };

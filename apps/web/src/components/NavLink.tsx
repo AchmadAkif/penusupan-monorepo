@@ -3,15 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-
-export interface NavLinkProps {
-  href: string;
-  label: string;
-  variant?: 'desktop' | 'mobile';
-  scrolled?: boolean;
-  onClick?: () => void;
-  className?: string;
-}
+import type { NavLinkProps } from '@/types/navigation';
 
 export function NavLink({
   href,

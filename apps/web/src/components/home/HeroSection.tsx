@@ -2,29 +2,22 @@
 
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import { Sparkles, MapPin, TrendingUp } from 'lucide-react';
+import { Sparkles, MapPin } from 'lucide-react';
 import { CTAButton } from '@/components/CTAButton';
 import {
   fadeInUp,
   staggerContainer,
   scaleIn,
-  slideInRight,
 } from '@/constants/animation';
-
-export interface HeroSectionProps {
-  title?: string;
-  subtitle?: string;
-  eyebrow?: string;
-  primaryCta?: { label: string; href: string };
-  secondaryCta?: { label: string; href: string };
-}
+import { DEFAULT_HERO_DATA } from '@/constants/seedData';
+import type { HeroSectionProps } from '@/types/home';
 
 export function HeroSection({
-  eyebrow = 'Website Resmi Pemerintah Desa',
-  title = 'Harmoni Tradisi, Menuju Desa Berdaya & Sejahtera',
-  subtitle = 'Selamat datang di portal informasi resmi Desa Penusupan, Kecamatan Pejawaran, Kabupaten Banjarnegara. Temukan layanan, potensi UMKM, berita terkini, dan profil desa.',
-  primaryCta = { label: 'Jelajahi Profil', href: '/profile' },
-  secondaryCta = { label: 'Potensi UMKM', href: '/businesses' },
+  eyebrow = DEFAULT_HERO_DATA.eyebrow,
+  title = DEFAULT_HERO_DATA.title,
+  subtitle = DEFAULT_HERO_DATA.subtitle,
+  primaryCta = DEFAULT_HERO_DATA.primaryCta,
+  secondaryCta = DEFAULT_HERO_DATA.secondaryCta,
 }: HeroSectionProps) {
   return (
     <section className="relative min-h-[90vh] lg:min-h-screen bg-navy text-white flex items-center overflow-hidden pt-24 pb-28 lg:pt-28 lg:pb-36">
@@ -35,7 +28,6 @@ export function HeroSection({
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-
           {/* ── Left Column: Content & Calls to Action ── */}
           <motion.div
             variants={staggerContainer}
@@ -44,7 +36,10 @@ export function HeroSection({
             className="lg:col-span-7 flex flex-col space-y-6 sm:space-y-8 text-center lg:text-left"
           >
             {/* Eyebrow Badge */}
-            <motion.div variants={fadeInUp} className="flex justify-center lg:justify-start">
+            <motion.div
+              variants={fadeInUp}
+              className="flex justify-center lg:justify-start"
+            >
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-gold-light text-xs sm:text-sm font-medium font-body shadow-sm">
                 <Sparkles size={14} className="text-gold" />
                 <span>{eyebrow}</span>
@@ -128,13 +123,14 @@ export function HeroSection({
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-navy/80 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white/90">
-                  <span className="font-heading font-semibold">Desa Penusupan</span>
+                  <span className="font-heading font-semibold">
+                    Desa Penusupan
+                  </span>
                   <span className="text-white/60">Kec. Pejawaran</span>
                 </div>
               </motion.div>
             </motion.div>
           </div>
-
         </div>
       </div>
     </section>

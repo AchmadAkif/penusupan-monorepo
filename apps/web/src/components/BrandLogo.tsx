@@ -2,16 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { VILLAGE_INFO } from '@/constants/navigation';
-
-export interface BrandLogoProps {
-  href?: string;
-  theme?: 'dark' | 'light' | 'auto';
-  scrolled?: boolean;
-  size?: 'sm' | 'md' | 'lg';
-  showSubtext?: boolean;
-  className?: string;
-  onClick?: () => void;
-}
+import type { BrandLogoProps } from '@/types/ui';
 
 const sizeConfig = {
   sm: {
@@ -52,7 +43,7 @@ export function BrandLogo({
 
   const content = (
     <div className={cn('flex items-center gap-3 group', className)}>
-      <div className={cn(currentSize.container, 'flex-shrink-0')}>
+      <div className={cn(currentSize.container, 'shrink-0')}>
         <Image
           src="/logo.png"
           alt={`Logo ${VILLAGE_INFO.name}`}

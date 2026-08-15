@@ -7,19 +7,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { NavLink } from '@/components/NavLink';
 import { BrandLogo } from '@/components/BrandLogo';
 import { backdropAnimation, sidebarAnimation } from '@/constants/animation';
-import { NavLinkItem } from '@/constants/navigation';
-
-export interface MobileNavDrawerProps {
-  isOpen: boolean;
-  onClose: () => void;
-  links: NavLinkItem[];
-  cta?: NavLinkItem;
-}
+import type { MobileNavDrawerProps } from '@/types/navigation';
 
 export function MobileNavDrawer({
   isOpen,
   onClose,
   links,
+  cta,
 }: MobileNavDrawerProps) {
   // Prevent body scroll when drawer is open
   useEffect(() => {

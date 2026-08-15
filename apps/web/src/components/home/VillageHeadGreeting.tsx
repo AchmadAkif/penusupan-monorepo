@@ -5,33 +5,18 @@ import { motion } from 'motion/react';
 import { Quote, Award, Sparkles } from 'lucide-react';
 import { CTAButton } from '@/components/CTAButton';
 import { fadeInUp, staggerContainer, slideInLeft } from '@/constants/animation';
-
-export interface VillageHeadGreetingProps {
-  name?: string;
-  role?: string;
-  period?: string;
-  photoUrl?: string;
-  greetingTitle?: string;
-  paragraphs?: string[];
-  signatureText?: string;
-  profileHref?: string;
-}
-
-const DEFAULT_PARAGRAPHS = [
-  'Puji syukur senantiasa kita panjatkan ke hadirat Tuhan Yang Maha Esa atas limpahan rahmat dan karunia-Nya, sehingga website resmi Desa Penusupan ini dapat hadir sebagai jembatan komunikasi dan keterbukaan informasi publik bagi seluruh warga masyarakat.',
-  'Di era transformasi digital ini, kami berkomitmen untuk mewujudkan tata kelola pemerintahan desa yang transparan, akuntabel, dan berorientasi pada pelayanan prima. Website ini dirancang agar masyarakat dapat mengakses layanan administrasi, memantau perkembangan pembangunan desa, serta mengeksplorasi potensi pertanian dan UMKM unggulan kami dengan mudah.',
-  'Mari bersama-sama kita satukan tekad dan semangat gotong royong untuk membangun Desa Penusupan yang maju, mandiri, sejahtera, dan senantiasa melestarikan nilai-nilai kearifan lokal.',
-];
+import { DEFAULT_VILLAGE_HEAD } from '@/constants/seedData';
+import type { VillageHeadGreetingProps } from '@/types/home';
 
 export function VillageHeadGreeting({
-  name = 'Kepala Desa Penusupan',
-  role = 'Kepala Desa',
-  period = 'Masa Bakti 2019 – 2025',
-  photoUrl = '/images/village-head-placeholder.svg',
-  greetingTitle = 'Mewujudkan Desa Penusupan yang Maju, Transparan, dan Sejahtera',
-  paragraphs = DEFAULT_PARAGRAPHS,
-  signatureText = 'Salam Hangat & Gotong Royong,',
-  profileHref = '/profile',
+  name = DEFAULT_VILLAGE_HEAD.name,
+  role = DEFAULT_VILLAGE_HEAD.role,
+  period = DEFAULT_VILLAGE_HEAD.period,
+  photoUrl = DEFAULT_VILLAGE_HEAD.photoUrl,
+  greetingTitle = DEFAULT_VILLAGE_HEAD.greetingTitle,
+  paragraphs = DEFAULT_VILLAGE_HEAD.paragraphs,
+  signatureText = DEFAULT_VILLAGE_HEAD.signatureText,
+  profileHref = DEFAULT_VILLAGE_HEAD.profileHref,
 }: VillageHeadGreetingProps) {
   return (
     <section className="relative py-20 lg:py-28 bg-linen overflow-hidden">
@@ -41,7 +26,6 @@ export function VillageHeadGreeting({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
           {/* ── Column 1: Portrait & Official Badge (5 cols) ── */}
           <motion.div
             variants={slideInLeft}
@@ -158,9 +142,7 @@ export function VillageHeadGreeting({
                 />
               )}
             </motion.div>
-
           </motion.div>
-
         </div>
       </div>
     </section>

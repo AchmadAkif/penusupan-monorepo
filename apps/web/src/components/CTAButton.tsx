@@ -1,8 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { ArrowRight, type LucideIcon } from 'lucide-react';
+import { cva } from 'class-variance-authority';
+import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import type { CTAButtonProps } from '@/types/ui';
 
 export const buttonVariants = cva(
   'group inline-flex items-center justify-center gap-2 rounded-xl font-heading font-semibold transition-all duration-200 active:scale-[0.98] select-none cursor-pointer disabled:opacity-50 disabled:pointer-events-none',
@@ -34,19 +35,6 @@ export const buttonVariants = cva(
     },
   },
 );
-
-export interface CTAButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  href?: string;
-  label?: string;
-  icon?: LucideIcon;
-  iconPosition?: 'left' | 'right';
-  showIcon?: boolean;
-  target?: string;
-  rel?: string;
-  children?: React.ReactNode;
-}
 
 export function CTAButton({
   href,

@@ -1,51 +1,18 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { Users, Map, Home, Store } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '@/constants/animation';
+import { DEFAULT_VILLAGE_STATS } from '@/constants/seedData';
+import type { StatsBarProps } from '@/types/home';
 
-export interface StatItem {
-  icon: typeof Users;
-  value: string;
-  label: string;
-  sublabel?: string;
-}
-
-export interface StatsBarProps {
-  stats?: StatItem[];
-  className?: string;
-}
-
-const DEFAULT_STATS: StatItem[] = [
-  {
-    icon: Users,
-    value: '2.850+',
-    label: 'Jumlah Penduduk',
-    sublabel: 'Jiwa terdata',
-  },
-  {
-    icon: Map,
-    value: '342,5',
-    label: 'Luas Wilayah',
-    sublabel: 'Hektar persegi',
-  },
-  {
-    icon: Home,
-    value: '4',
-    label: 'Wilayah Dusun',
-    sublabel: 'Rukun Warga & RT',
-  },
-  {
-    icon: Store,
-    value: '35+',
-    label: 'UMKM Aktif',
-    sublabel: 'Sektor usaha lokal',
-  },
-];
-
-export function StatsBar({ stats = DEFAULT_STATS, className }: StatsBarProps) {
+export function StatsBar({
+  stats = DEFAULT_VILLAGE_STATS,
+  className,
+}: StatsBarProps) {
   return (
-    <div className={`relative -mt-16 sm:-mt-20 z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${className || ''}`}>
+    <div
+      className={`relative -mt-16 sm:-mt-20 z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${className || ''}`}
+    >
       <motion.div
         variants={staggerContainer}
         initial="hidden"

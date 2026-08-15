@@ -6,21 +6,16 @@ import { Menu } from 'lucide-react';
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { navbarAnimation } from '@/constants/animation';
-import { NAV_LINKS, DEFAULT_CTA_LINK, NavLinkItem } from '@/constants/navigation';
+import { NAV_LINKS, DEFAULT_CTA_LINK } from '@/constants/navigation';
 import { useScrollThreshold } from '@/hooks/useScrollThreshold';
 import { BrandLogo } from '@/components/BrandLogo';
 import { NavLink } from '@/components/NavLink';
 import { MobileNavDrawer } from '@/components/MobileNavDrawer';
+import type { NavbarProps } from '@/types/navigation';
 
-export interface NavbarProps {
-  links?: NavLinkItem[];
-  cta?: NavLinkItem;
-  className?: string;
-  threshold?: number;
-}
-
-export default function Navbar({
+export function Navbar({
   links = NAV_LINKS,
+  cta = DEFAULT_CTA_LINK,
   className,
   threshold = 20,
 }: NavbarProps) {
@@ -44,12 +39,14 @@ export default function Navbar({
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
-
             {/* ── Brand Logo ── */}
             <BrandLogo scrolled={scrolled} onClick={() => setMenuOpen(false)} />
 
             {/* ── Desktop Navigation Links ── */}
-            <nav className="hidden lg:flex items-center gap-1" aria-label="Main Navigation">
+            <nav
+              className="hidden lg:flex items-center gap-1"
+              aria-label="Main Navigation"
+            >
               {links.map((link) => (
                 <NavLink
                   key={link.href}
@@ -76,7 +73,6 @@ export default function Navbar({
             >
               <Menu size={22} />
             </button>
-
           </div>
         </div>
       </motion.header>
@@ -86,7 +82,10 @@ export default function Navbar({
         isOpen={menuOpen}
         onClose={() => setMenuOpen(false)}
         links={links}
+        cta={cta}
       />
     </>
   );
 }
+
+export default Navbar;
