@@ -39,3 +39,18 @@ export interface OfficialCardProps {
   highlight?: boolean;
   className?: string;
 }
+
+export interface VillageHistoryData {
+  title: string;
+  subtitle: string;
+  paragraphs: string[];
+  imageUrl: string;
+  imageCaption: string;
+  quote?: string;
+}
+
+export interface VillageHistorySectionProps {
+  history?: VillageHistoryData;
+  className?: string;
+}
+

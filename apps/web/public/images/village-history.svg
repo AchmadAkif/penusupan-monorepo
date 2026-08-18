@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="histBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D2A4A" />
+      <stop offset="40%" stop-color="#3B3454" />
+      <stop offset="80%" stop-color="#584852" />
+      <stop offset="100%" stop-color="#7B6152" />
+    </linearGradient>
+    <linearGradient id="sunGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#CA8A04" stop-opacity="0.2" />
+    </linearGradient>
+    <linearGradient id="mountainFar" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#473C5B" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#2C233C" />
+    </linearGradient>
+    <linearGradient id="mountainMid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#644E57" />
+      <stop offset="100%" stop-color="#30232B" />
+    </linearGradient>
+    <linearGradient id="valleyNear" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7C6353" />
+      <stop offset="100%" stop-color="#22181C" />
+    </linearGradient>
+    <pattern id="vintageGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#CA8A04" stroke-width="0.5" stroke-opacity="0.15" />
+    </pattern>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#0F0C1E" stop-opacity="0.6" />
+    </radialGradient>
+  </defs>
+
+  <!-- Sky & Canvas -->
+  <rect width="800" height="600" fill="url(#histBg)" />
+  <rect width="800" height="600" fill="url(#vintageGrid)" />
+
+  <!-- Rising Sun Behind Mountains -->
+  <circle cx="400" cy="240" r="140" fill="url(#sunGlow)" filter="blur(20px)" />
+  <circle cx="400" cy="240" r="90" fill="#FEF08A" opacity="0.6" />
+
+  <!-- Far Distant Mountain Peaks -->
+  <path d="M 0 340 Q 180 180 360 270 T 800 230 L 800 600 L 0 600 Z" fill="url(#mountainFar)" />
+
+  <!-- Mid-distance Ridges -->
+  <path d="M 0 380 Q 240 260 480 340 T 800 310 L 800 600 L 0 600 Z" fill="url(#mountainMid)" />
+
+  <!-- Terraced Valley Hills (Foreground) -->
+  <path d="M 0 450 Q 200 370 420 430 T 800 400 L 800 600 L 0 600 Z" fill="url(#valleyNear)" />
+
+  <!-- Traditional Village Silhouettes & Rooflines -->
+  <!-- House 1 -->
+  <polygon points="180,420 220,385 260,420" fill="#1C141E" />
+  <rect x="195" y="420" width="50" height="30" fill="#1C141E" />
+  
+  <!-- House 2 (Joglo Style) -->
+  <polygon points="280,410 320,370 360,410" fill="#241B26" />
+  <polygon points="295,370 320,350 345,370" fill="#D97706" opacity="0.8" />
+  <rect x="290" y="410" width="60" height="40" fill="#1C141E" />
+
+  <!-- Trees & Nature Elements -->
+  <circle cx="160" cy="425" r="22" fill="#1A1520" />
+  <circle cx="145" cy="435" r="18" fill="#14101A" />
+  <circle cx="380" cy="420" r="28" fill="#201824" />
+  <circle cx="405" cy="430" r="20" fill="#14101A" />
+
+  <circle cx="620" cy="410" r="35" fill="#1F1724" />
+  <circle cx="655" cy="425" r="24" fill="#160F1A" />
+  
+  <!-- Vintage Decorative Border Line Frame -->
+  <rect x="24" y="24" width="752" height="552" fill="none" stroke="#CA8A04" stroke-width="1.5" stroke-opacity="0.4" rx="12" />
+  <rect x="32" y="32" width="736" height="536" fill="none" stroke="#FFFFFF" stroke-width="0.8" stroke-opacity="0.2" rx="8" />
+
+  <!-- Corner Flourishes -->
+  <circle cx="24" cy="24" r="5" fill="#CA8A04" opacity="0.6" />
+  <circle cx="776" cy="24" r="5" fill="#CA8A04" opacity="0.6" />
+  <circle cx="24" cy="576" r="5" fill="#CA8A04" opacity="0.6" />
+  <circle cx="776" cy="576" r="5" fill="#CA8A04" opacity="0.6" />
+
+  <!-- Vintage Vignette Overlay -->
+  <rect width="800" height="600" fill="url(#vignette)" rx="16" />
+</svg>

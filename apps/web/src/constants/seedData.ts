@@ -27,7 +27,10 @@ import type {
   GeographyMetricItem,
   NewsItem,
 } from '@/types/home';
-import type { VillageOrgStructure } from '@/types/profile';
+import type {
+  VillageOrgStructure,
+  VillageHistoryData,
+} from '@/types/profile';
 
 // ── 1. Hero Section Default Data ──
 export const DEFAULT_HERO_DATA: Required<HeroSectionProps> = {
@@ -364,4 +367,21 @@ export const DEFAULT_ORG_STRUCTURE: VillageOrgStructure = {
     },
   ],
 };
+
+// ── 10. Village History Default Narrative ──
+export const DEFAULT_VILLAGE_HISTORY: VillageHistoryData = {
+  title: 'Menelusuri Jejak Langkah & Warisan Leluhur',
+  subtitle:
+    'Rangkaian kisah perjalanan sejarah, kearifan lokal, dan nilai luhur gotong royong yang membentuk identitas Desa Penusupan.',
+  paragraphs: [
+    'Keberadaan Desa Penusupan tidak terlepas dari kisah perjalanan panjang para sesepuh pendahulu yang membuka permukiman di kawasan lembah pegunungan yang subur ini. Nama "Penusupan" secara turun-temurun diyakini sarat akan makna filosofis mengenai keteguhan, ketenangan alam, dan ikatan kekerabatan masyarakat yang erat dalam menjaga keharmonisan lingkungan.',
+    'Seiring berjalannya waktu dan pergantian generasi, Desa Penusupan terus bertransformasi dari sebuah permukiman agraris tradisional menjadi desa yang mandiri, berdaya, dan terbuka terhadap kemajuan. Nilai-nilai kearifan lokal seperti gotong royong, musyawarah mufakat, serta penghormatan terhadap alam tetap menjadi fondasi utama yang mendasari setiap gerak langkah pembangunan desa.',
+    'Saat ini, pemerintah desa bersama seluruh elemen masyarakat dan tokoh adat terus mendokumentasikan serta menghimpun arsip sejarah resmi desa secara komprehensif, guna memastikan warisan nilai luhur ini dapat terus dipelajari dan diwariskan dengan bangga kepada generasi mendatang.',
+  ],
+  imageUrl: '/images/village-history.svg',
+  imageCaption: 'Bentang alam lembah dan harmoni kehidupan masyarakat Desa Penusupan.',
+  quote:
+    'Menjaga warisan luhur para pendahulu, melangkah bersama membangun masa depan desa yang berdaulat dan sejahtera.',
+};
+
 
