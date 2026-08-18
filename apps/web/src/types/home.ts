@@ -101,3 +101,28 @@ export interface GeographySectionProps {
   ctaHref?: string;
   className?: string;
 }
+
+export interface NewsItem {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  category: string;
+  publishedAt: string;
+  author: string;
+  readTime: string;
+  imageUrl: string;
+  isFeatured?: boolean;
+}
+
+export interface NewsCardProps {
+  news: NewsItem;
+  className?: string;
+}
+
+export interface LatestNewsSectionProps {
+  news?: NewsItem[];
+  ctaLabel?: string;
+  ctaHref?: string;
+  className?: string;
+}

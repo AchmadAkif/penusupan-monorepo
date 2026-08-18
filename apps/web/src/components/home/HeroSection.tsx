@@ -10,7 +10,7 @@ import {
   staggerContainer,
   scaleIn,
 } from '@/constants/animation';
-import { DEFAULT_HERO_DATA, DEFAULT_VILLAGE_STATS } from '@/constants/seedData';
+import { DEFAULT_HERO_DATA } from '@/constants/seedData';
 import type { HeroSectionProps } from '@/types/home';
 
 export function HeroSection({

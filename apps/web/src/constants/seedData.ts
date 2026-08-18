@@ -25,6 +25,7 @@ import type {
   VisionMissionData,
   DemographicSectionData,
   GeographyMetricItem,
+  NewsItem,
 } from '@/types/home';
 
 // ── 1. Hero Section Default Data ──
@@ -217,5 +218,46 @@ export const DEFAULT_GEOGRAPHY_METRICS: GeographyMetricItem[] = [
     description: 'Potensi perkebunan produktif masyarakat penunjang ekonomi pedesaan.',
     icon: Trees,
     badge: 'Perkebunan',
+  },
+];
+
+// ── 8. Latest News Default Data ──
+export const DEFAULT_LATEST_NEWS: NewsItem[] = [
+  {
+    id: 'news-1',
+    title: 'Panen Raya Komoditas Hortikultura Desa Penusupan Tembus Rekor Produktivitas',
+    slug: 'panen-raya-hortikultura-penusupan',
+    excerpt:
+      'Petani Desa Penusupan mencatatkan kenaikan hasil panen kentang dan kubis berkat penerapan teknik pertanian berkelanjutan dan pemanfaatan pupuk organik lokal.',
+    category: 'Pertanian',
+    publishedAt: '16 Agu 2026',
+    author: 'Tim Redaksi Desa',
+    readTime: '3 mnt baca',
+    imageUrl: '/images/news-hortikultura.svg',
+    isFeatured: true,
+  },
+  {
+    id: 'news-2',
+    title: 'Pembangunan Akses Jalan Usaha Tani Dusun III Selesai, Permudah Distribusi Hasil Bumi',
+    slug: 'pembangunan-jalan-usaha-tani-selesai',
+    excerpt:
+      'Pemerintah Desa Penusupan meresmikan pembukaan dan pengaspalan jalan usaha tani sepanjang 1,2 km guna memperlancar mobilitas para petani menuju lahan perkebunan.',
+    category: 'Pembangunan',
+    publishedAt: '12 Agu 2026',
+    author: 'Pemerintah Desa',
+    readTime: '4 mnt baca',
+    imageUrl: '/images/news-jalan-desa.svg',
+  },
+  {
+    id: 'news-3',
+    title: 'Pelatihan Digitalisasi & Inovasi Kemasan Produk UMKM Olahan Desa Penusupan',
+    slug: 'pelatihan-digitalisasi-kemasan-umkm',
+    excerpt:
+      'Sebanyak 35 pelaku UMKM desa mengikuti workshop peningkatan daya saing produk lokal, standarisasi kemasan modern, dan onboarding platform digital.',
+    category: 'Ekonomi & UMKM',
+    publishedAt: '08 Agu 2026',
+    author: 'Pokdarwis & UMKM',
+    readTime: '3 mnt baca',
+    imageUrl: '/images/news-umkm-digital.svg',
   },
 ];
