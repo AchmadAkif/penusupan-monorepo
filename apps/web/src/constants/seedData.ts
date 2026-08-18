@@ -233,12 +233,19 @@ export const DEFAULT_LATEST_NEWS: NewsItem[] = [
     slug: 'panen-raya-hortikultura-penusupan',
     excerpt:
       'Petani Desa Penusupan mencatatkan kenaikan hasil panen kentang dan kubis berkat penerapan teknik pertanian berkelanjutan dan pemanfaatan pupuk organik lokal.',
+    content: [
+      'Musim panen raya tahun ini membawa kabar menggembirakan bagi seluruh masyarakat agraris Desa Penusupan, Kecamatan Pejawaran. Berkat cuaca yang kondusif serta pendampingan intensif dari kelompok tani desa, produktivitas komoditas unggulan seperti kentang, kubis, dan cabai merah berhasil melonjak signifikan dibandingkan tahun sebelumnya.',
+      'Kepala Desa Penusupan menyatakan apresiasi mendalam kepada para petani yang mulai konsisten mengadopsi teknik pertanian ramah lingkungan, termasuk penggunaan pupuk kompos organik yang diproduksi secara mandiri di tingkat dusun. Hal ini tidak hanya memangkas biaya operasional petani, tetapi juga memulihkan kesuburan tanah pegunungan dalam jangka panjang.',
+      'Ke depan, Pemerintah Desa Penusupan bersama Badan Usaha Milik Desa (BUMDes) tengah merancang skema rantai pasok terintegrasi untuk menghubungkan langsung hasil panen petani lokal ke pasar induk regional dan platform digital agribisnis, guna menjamin kestabilan harga saat musim panen melimpah.',
+    ],
     category: 'Pertanian',
     publishedAt: '16 Agu 2026',
     author: 'Tim Redaksi Desa',
     readTime: '3 mnt baca',
+    viewCount: 1420,
     imageUrl: '/images/news-hortikultura.svg',
     isFeatured: true,
+    tags: ['Pertanian', 'Panen Raya', 'Hortikultura', 'Ketahanan Pangan'],
   },
   {
     id: 'news-2',
@@ -246,11 +253,18 @@ export const DEFAULT_LATEST_NEWS: NewsItem[] = [
     slug: 'pembangunan-jalan-usaha-tani-selesai',
     excerpt:
       'Pemerintah Desa Penusupan meresmikan pembukaan dan pengaspalan jalan usaha tani sepanjang 1,2 km guna memperlancar mobilitas para petani menuju lahan perkebunan.',
+    content: [
+      'Konektivitas antardusun dan akses menuju sentra perkebunan di Desa Penusupan kini semakin lancar dengan rampungnya proyek pengaspalan jalan usaha tani Dusun III. Jalur sepanjang 1,2 kilometer ini sebelumnya berupa jalan tanah berbatu yang sulit dilalui kendaraan roda empat saat musim penghujan.',
+      'Pembangunan infrastruktur vital ini dibiayai melalui alokasi Dana Desa tahun anggaran 2026 dengan melibatkan tenaga kerja lokal melalui skema Padat Karya Tunai Desa (PKTD). Warga setempat menyambut antusias peresmian jalan ini karena biaya angkut hasil panen kini dapat dihemat hingga 40%.',
+      'Pemerintah desa menegaskan komitmennya untuk melanjutkan pemerataan infrastruktur jalan di dusun-dusun lainnya secara bertahap demi menunjang keselamatan dan produktivitas warga.',
+    ],
     category: 'Pembangunan',
     publishedAt: '12 Agu 2026',
     author: 'Pemerintah Desa',
     readTime: '4 mnt baca',
+    viewCount: 980,
     imageUrl: '/images/news-jalan-desa.svg',
+    tags: ['Infrastruktur', 'Dana Desa', 'Jalan Tani', 'Pembangunan'],
   },
   {
     id: 'news-3',
@@ -258,13 +272,71 @@ export const DEFAULT_LATEST_NEWS: NewsItem[] = [
     slug: 'pelatihan-digitalisasi-kemasan-umkm',
     excerpt:
       'Sebanyak 35 pelaku UMKM desa mengikuti workshop peningkatan daya saing produk lokal, standarisasi kemasan modern, dan onboarding platform digital.',
+    content: [
+      'Guna mendorong pelaku usaha mikro naik kelas, Pemerintah Desa Penusupan bekerja sama dengan akademisi dan praktisi digital menggelar pelatihan inovasi kemasan dan pemasaran daring bagi para perajin olahan pangan lokal dan komoditas kopi desa.',
+      'Dalam workshop yang berlangsung selama dua hari di Aula Balai Desa, para peserta dibekali wawasan mengenai keamanan pangan (P-IRT), desain kemasan kedap udara berlabel nutrisi, serta teknik fotografi produk sederhana menggunakan telepon pintar untuk promosi media sosial dan marketplace.',
+      'Harapannya, ragam camilan khas dan produk unggulan Desa Penusupan tidak hanya diminati di lingkup lokal, tetapi mampu menembus jaringan oleh-oleh khas Dieng dan pasar nasional.',
+    ],
     category: 'Ekonomi & UMKM',
     publishedAt: '08 Agu 2026',
     author: 'Pokdarwis & UMKM',
     readTime: '3 mnt baca',
+    viewCount: 1250,
     imageUrl: '/images/news-umkm-digital.svg',
+    tags: ['UMKM', 'Ekonomi Kreatif', 'Digitalisasi', 'Pelatihan'],
+  },
+  {
+    id: 'news-4',
+    title: 'Pekan Imunisasi & Deteksi Dini Stunting Posyandu Balita Desa Penusupan',
+    slug: 'pekan-imunisasi-posyandu-balita-penusupan',
+    excerpt:
+      'Layanan posyandu serentak di 4 pos desa berhasil mencatat 100% kehadiran balita untuk penimbangan, imunisasi rutin, dan pemberian makanan tambahan bergizi.',
+    content: [
+      'Kader Posyandu bersama bidan desa menggelar kegiatan Pekan Kesehatan Terpadu yang menyasar ratusan ibu hamil dan anak balita di 4 Posyandu Desa Penusupan. Agenda ini mencakup penimbangan berat badan, pengukuran tinggi badan, pemberian vitamin A, serta imunisasi dasar lengkap.',
+      'Sebagai bentuk komitmen pencegahan stunting di tingkat akar rumput, pemerintah desa juga mendistribusikan paket Pemberian Makanan Tambahan (PMT) berbasis pangan lokal kaya protein, seperti olahan telur dan sayuran hijau organik.',
+      'Kesadaran orang tua di Desa Penusupan terhadap kesehatan tumbuh kembang anak terus menunjukkan peningkatan positif yang sangat menggembirakan.',
+    ],
+    category: 'Kesehatan',
+    publishedAt: '02 Agu 2026',
+    author: 'Kader Kesehatan Desa',
+    readTime: '3 mnt baca',
+    viewCount: 840,
+    imageUrl: '/images/news-hortikultura.svg',
+    tags: ['Kesehatan', 'Posyandu', 'Stunting', 'Balita'],
+  },
+  {
+    id: 'news-5',
+    title: 'Semarak Tradisi Bersih Dusun & Pentas Seni Budaya Lokal Pererat Silaturahmi',
+    slug: 'semarak-tradisi-bersih-dusun-pentas-seni',
+    excerpt:
+      'Warga masyarakat tumpah ruah menggelar tradisi ruwat bumi dan pentas kesenian tradisional sebagai ungkapan syukur atas kelimpahan rezeki dan kerukunan desa.',
+    content: [
+      'Suasana kebersamaan dan kekhidmatan menyelimuti Desa Penusupan dalam perayaan tradisi tahunan Bersih Dusun. Rangkaian acara diawali dengan gotong royong membersihkan sumber mata air desa, dilanjutkan doa bersama lintas dusun, serta pementasan kesenian tradisional embeg dan calung.',
+      'Kegiatan budaya ini menjadi momentum penting untuk merekatkan tali silaturahmi antargenerasi, sekaligus melestarikan khazanah warisan budaya leluhur agar tidak tergerus oleh arus modernisasi.',
+      'Pemerintah desa terus berkomitmen mendukung kegiatan kebudayaan ini sebagai daya tarik wisata berbasis kearifan lokal di kawasan Pejawaran.',
+    ],
+    category: 'Budaya',
+    publishedAt: '28 Jul 2026',
+    author: 'Karang Taruna',
+    readTime: '4 mnt baca',
+    viewCount: 1610,
+    imageUrl: '/images/village-history.svg',
+    tags: ['Budaya', 'Tradisi', 'Kearifan Lokal', 'Seni Tradisional'],
   },
 ];
+
+export const DEFAULT_NEWS_CATEGORIES: string[] = [
+  'Semua',
+  'Pertanian',
+  'Pembangunan',
+  'Ekonomi & UMKM',
+  'Kesehatan',
+  'Budaya',
+];
+
+export const DEFAULT_NEWS_DATA: NewsItem[] = DEFAULT_LATEST_NEWS;
+
+
 
 // ── 9. Organizational Structure Default Data (Real Official Data) ──
 export const DEFAULT_ORG_STRUCTURE: VillageOrgStructure = {

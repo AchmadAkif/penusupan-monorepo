@@ -107,12 +107,15 @@ export interface NewsItem {
   title: string;
   slug: string;
   excerpt: string;
+  content?: string[];
   category: string;
   publishedAt: string;
   author: string;
   readTime: string;
   imageUrl: string;
+  viewCount?: number;
   isFeatured?: boolean;
+  tags?: string[];
 }
 
 export interface NewsCardProps {

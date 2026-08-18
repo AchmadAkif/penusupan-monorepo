@@ -35,8 +35,8 @@ export function NewsCard({ news, className = '' }: NewsCardProps) {
 
         {/* ── Content Body ── */}
         <div className="p-6 sm:p-7 space-y-4">
-          {/* Meta Info (Date & Read Time) */}
-          <div className="flex items-center gap-4 text-xs font-body text-stone-500">
+          {/* Meta Info (Date, Read Time, Views) */}
+          <div className="flex items-center flex-wrap gap-x-3 gap-y-1 text-xs font-body text-stone-500">
             <div className="flex items-center gap-1.5">
               <Calendar size={13} className="text-gold" />
               <span>{news.publishedAt}</span>
@@ -46,6 +46,14 @@ export function NewsCard({ news, className = '' }: NewsCardProps) {
               <Clock size={13} className="text-stone-400" />
               <span>{news.readTime}</span>
             </div>
+            {news.viewCount !== undefined && (
+              <>
+                <span>•</span>
+                <div className="flex items-center gap-1 text-stone-500 font-medium">
+                  <span>{news.viewCount.toLocaleString('id-ID')} tayang</span>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Article Title */}
