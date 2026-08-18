@@ -1,0 +1,85 @@
+'use client';
+
+import { motion } from 'motion/react';
+import { Eyebrow } from '@/components/Eyebrow';
+import { CTAButton } from '@/components/CTAButton';
+import { NewsCard } from './NewsCard';
+import { fadeInUp, staggerContainer } from '@/constants/animation';
+import { DEFAULT_LATEST_NEWS } from '@/constants/seedData';
+import type { LatestNewsSectionProps } from '@/types/home';
+
+export function LatestNewsSection({
+  news = DEFAULT_LATEST_NEWS,
+  ctaLabel = 'Lihat Semua Berita',
+  ctaHref = '/news',
+  className,
+}: LatestNewsSectionProps) {
+  return (
+    <section className={`py-20 lg:py-28 bg-white overflow-hidden ${className || ''}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        
+        {/* ── Section Header ── */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="text-center max-w-3xl mx-auto space-y-4"
+        >
+          <motion.div variants={fadeInUp} className="flex justify-center">
+            <Eyebrow label="Kabar & Informasi" variant="gold" />
+          </motion.div>
+
+          <motion.h2
+            variants={fadeInUp}
+            className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-navy tracking-tight"
+          >
+            Berita & Liputan Terkini
+          </motion.h2>
+
+          <motion.p
+            variants={fadeInUp}
+            className="font-body text-stone-600 text-sm sm:text-base leading-relaxed"
+          >
+            Ikuti perkembangan pembangunan desa, inovasi pertanian, geliat UMKM, dan ragam kegiatan masyarakat Desa Penusupan.
+          </motion.p>
+        </motion.div>
+
+        {/* ── 3-Column News Cards Grid ── */}
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {news.map((item) => (
+            <NewsCard key={item.id} news={item} />
+          ))}
+        </motion.div>
+
+        {/* ── Call to Action to View All News ── */}
+        {ctaHref && (
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center pt-4"
+          >
+            <p className="font-body text-xs sm:text-sm text-stone-500">
+              Temukan seluruh arsip artikel dan dokumentasi kegiatan desa lainnya.
+            </p>
+            <CTAButton
+              href={ctaHref}
+              label={ctaLabel}
+              variant="outline"
+              size="md"
+            />
+          </motion.div>
+        )}
+
+      </div>
+    </section>
+  );
+}
