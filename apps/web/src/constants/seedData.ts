@@ -73,7 +73,7 @@ export const DEFAULT_VILLAGE_STATS: StatItem[] = [
 // ── 3. Village Head Greeting & Info ──
 export const DEFAULT_VILLAGE_HEAD: Required<VillageHeadGreetingProps> = {
   name: 'Budi Indarto',
-  role: 'Kepala Desa Penusupan',
+  role: 'Kepala Desa',
   period: 'Masa Bakti 2019 – 2025',
   photoUrl: '/images/village-head-placeholder.svg',
   greetingTitle:
