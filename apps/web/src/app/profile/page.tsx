@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ProfileHero } from '@/components/profile/ProfileHero';
 import { VisionMissionSection } from '@/components/home/vision-mission';
+import { OrgChartSection } from '@/components/profile/org-chart';
 
 export const metadata: Metadata = {
   title: 'Profil Desa',
@@ -16,6 +17,9 @@ export default function ProfilePage() {
 
       {/* ── 1. Visi & Misi Desa (Section 1) ── */}
       <VisionMissionSection />
+
+      {/* ── 2. Struktur Organisasi Desa (Section 2) ── */}
+      <OrgChartSection />
     </div>
   );
 }

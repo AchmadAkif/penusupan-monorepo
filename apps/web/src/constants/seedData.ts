@@ -27,6 +27,7 @@ import type {
   GeographyMetricItem,
   NewsItem,
 } from '@/types/home';
+import type { VillageOrgStructure } from '@/types/profile';
 
 // ── 1. Hero Section Default Data ──
 export const DEFAULT_HERO_DATA: Required<HeroSectionProps> = {
@@ -68,14 +69,14 @@ export const DEFAULT_VILLAGE_STATS: StatItem[] = [
 
 // ── 3. Village Head Greeting & Info ──
 export const DEFAULT_VILLAGE_HEAD: Required<VillageHeadGreetingProps> = {
-  name: 'Kepala Desa Penusupan',
-  role: 'Kepala Desa',
+  name: 'Budi Indarto',
+  role: 'Kepala Desa Penusupan',
   period: 'Masa Bakti 2019 – 2025',
   photoUrl: '/images/village-head-placeholder.svg',
   greetingTitle:
     'Mewujudkan Desa Penusupan yang Maju, Transparan, dan Sejahtera',
   signatureText: 'Salam Hangat & Gotong Royong,',
-  profileHref: '/profile',
+  profileHref: '/profile#struktur',
   paragraphs: [
     'Puji syukur senantiasa kita panjatkan ke hadirat Tuhan Yang Maha Esa atas limpahan rahmat dan karunia-Nya, sehingga website resmi Desa Penusupan ini dapat hadir sebagai jembatan komunikasi dan keterbukaan informasi publik bagi seluruh warga masyarakat.',
     'Di era transformasi digital ini, kami berkomitmen untuk mewujudkan tata kelola pemerintahan desa yang transparan, akuntabel, dan berorientasi pada pelayanan prima. Website ini dirancang agar masyarakat dapat mengakses layanan administrasi, memantau perkembangan pembangunan desa, serta mengeksplorasi potensi pertanian dan UMKM unggulan kami dengan mudah.',
@@ -261,3 +262,106 @@ export const DEFAULT_LATEST_NEWS: NewsItem[] = [
     imageUrl: '/images/news-umkm-digital.svg',
   },
 ];
+
+// ── 9. Organizational Structure Default Data (Real Official Data) ──
+export const DEFAULT_ORG_STRUCTURE: VillageOrgStructure = {
+  head: {
+    id: 'kades',
+    name: 'Budi Indarto',
+    role: 'Kepala Desa',
+    category: 'pimpinan',
+    photoUrl: '/images/village-head-placeholder.svg',
+    hierarchyLevel: 1,
+  },
+  secretary: {
+    id: 'sekdes',
+    name: 'Ovik Suprayitno',
+    role: 'Sekretaris Desa',
+    category: 'pimpinan',
+    hierarchyLevel: 2,
+  },
+  kaurs: [
+    {
+      id: 'kaur-1',
+      name: 'Jana',
+      role: 'Kaur Perencanaan',
+      category: 'sekretariat',
+      hierarchyLevel: 3,
+    },
+    {
+      id: 'kaur-2',
+      name: 'Heli Susanto',
+      role: 'Kaur Tata Usaha & Umum',
+      category: 'sekretariat',
+      hierarchyLevel: 3,
+    },
+    {
+      id: 'kaur-3',
+      name: 'Santi Wiji Jayanti, S.Pd',
+      role: 'Kaur Keuangan',
+      category: 'sekretariat',
+      hierarchyLevel: 3,
+    },
+  ],
+  kasis: [
+    {
+      id: 'kasi-1',
+      name: 'Baidowi',
+      role: 'Kasi Pemerintahan',
+      category: 'teknis',
+      hierarchyLevel: 3,
+    },
+    {
+      id: 'kasi-2',
+      name: 'Nurwahyuni',
+      role: 'Kasi Pelayanan',
+      category: 'teknis',
+      hierarchyLevel: 3,
+    },
+    {
+      id: 'kasi-3',
+      name: 'Yunita Septa Dewi',
+      role: 'Kasi Kesejahteraan',
+      category: 'teknis',
+      hierarchyLevel: 3,
+    },
+  ],
+  kaduses: [
+    {
+      id: 'kadus-1',
+      name: 'Suwadi',
+      role: 'Kadus I',
+      category: 'kewilayahan',
+      hierarchyLevel: 4,
+    },
+    {
+      id: 'kadus-2',
+      name: 'Slamet',
+      role: 'Kadus II',
+      category: 'kewilayahan',
+      hierarchyLevel: 4,
+    },
+    {
+      id: 'kadus-3',
+      name: 'Miswanto',
+      role: 'Kadus III',
+      category: 'kewilayahan',
+      hierarchyLevel: 4,
+    },
+    {
+      id: 'kadus-4',
+      name: 'Rudi Darmawan',
+      role: 'Kadus IV',
+      category: 'kewilayahan',
+      hierarchyLevel: 4,
+    },
+    {
+      id: 'kadus-5',
+      name: 'Tanton Riyo Fernandi',
+      role: 'Kadus V',
+      category: 'kewilayahan',
+      hierarchyLevel: 4,
+    },
+  ],
+};
+

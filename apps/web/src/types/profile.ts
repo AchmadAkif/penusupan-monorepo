@@ -5,11 +5,37 @@ export interface ProfileHeroProps {
   className?: string;
 }
 
-export interface VillageOfficial {
+export type OfficialCategory =
+  | 'pimpinan'
+  | 'sekretariat'
+  | 'teknis'
+  | 'kewilayahan';
+
+export interface OfficialItem {
   id: string;
   name: string;
   role: string;
-  category: 'pimpinan' | 'perangkat' | 'kewilayahan';
+  category: OfficialCategory;
   photoUrl?: string;
-  hierarchyLevel: number;
+  hierarchyLevel?: number;
+}
+
+export interface VillageOrgStructure {
+  head: OfficialItem;
+  secretary: OfficialItem;
+  kaurs: OfficialItem[];
+  kasis: OfficialItem[];
+  kaduses: OfficialItem[];
+}
+
+export interface OrgChartSectionProps {
+  data?: VillageOrgStructure;
+  className?: string;
+}
+
+export interface OfficialCardProps {
+  official: OfficialItem;
+  size?: 'sm' | 'md' | 'lg';
+  highlight?: boolean;
+  className?: string;
 }
