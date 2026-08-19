@@ -2,9 +2,10 @@
 
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Newspaper, SearchX, RotateCcw, Inbox } from 'lucide-react';
+import { Newspaper, SearchX, RotateCcw } from 'lucide-react';
 import { NewsCard } from '@/components/home/news/NewsCard';
 import { NewsSidebar } from './NewsSidebar';
+import { NewsFeaturedCard } from './NewsFeaturedCard';
 import { staggerContainer, fadeInUp } from '@/constants/animation';
 import type { NewsFeedProps } from '@/types/news';
 
@@ -36,22 +37,16 @@ export function NewsFeed({
     });
   }, [articles, selectedCategory, searchQuery]);
 
-  // Compute category counts for sidebar badges
-  const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = { Semua: articles.length };
-    articles.forEach((art) => {
-      counts[art.category] = (counts[art.category] || 0) + 1;
-    });
-    return counts;
-  }, [articles]);
-
   const handleResetFilters = () => {
     setSearchQuery('');
     setSelectedCategory('Semua');
   };
 
   const isDatabaseEmpty = articles.length === 0;
-  const isSearchEmpty = !isDatabaseEmpty && filteredArticles.length === 0;
+
+  // Split featured latest article and remaining articles
+  const featuredArticle = filteredArticles[0];
+  const remainingArticles = filteredArticles.slice(1);
 
   return (
     <section className={`py-12 lg:py-16 ${className || ''}`}>
@@ -98,20 +93,40 @@ export function NewsFeed({
               )}
             </div>
 
-            {/* Articles Grid or Distinct Empty States */}
+            {/* Articles List / Grid or Distinct Empty States */}
             <AnimatePresence mode="wait">
               {filteredArticles.length > 0 ? (
-                <motion.div
-                  key={`${selectedCategory}-${searchQuery}`}
-                  variants={staggerContainer}
-                  initial="hidden"
-                  animate="visible"
-                  className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
-                >
-                  {filteredArticles.map((news) => (
-                    <NewsCard key={news.id} news={news} />
-                  ))}
-                </motion.div>
+                <div key={`${selectedCategory}-${searchQuery}`} className="space-y-10">
+                  {/* ── 1. Hero / Featured Latest Article Card ── */}
+                  {featuredArticle && (
+                    <NewsFeaturedCard article={featuredArticle} />
+                  )}
+
+                  {/* ── 2. Remaining Articles Section Grid ── */}
+                  {remainingArticles.length > 0 && (
+                    <div className="space-y-6">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-1.5 h-6 bg-gold rounded-full shrink-0" />
+                        <h3 className="font-heading font-bold text-xl sm:text-2xl text-navy">
+                          {selectedCategory === 'Semua' && !searchQuery
+                            ? 'Artikel Terbaru'
+                            : 'Artikel Terkait Lainnya'}
+                        </h3>
+                      </div>
+
+                      <motion.div
+                        variants={staggerContainer}
+                        initial="hidden"
+                        animate="visible"
+                        className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
+                      >
+                        {remainingArticles.map((news) => (
+                          <NewsCard key={news.id} news={news} />
+                        ))}
+                      </motion.div>
+                    </div>
+                  )}
+                </div>
               ) : isDatabaseEmpty ? (
                 /* ── EMPTY STATE 1: DATABASE COMPLETELY EMPTY ── */
                 <motion.div
