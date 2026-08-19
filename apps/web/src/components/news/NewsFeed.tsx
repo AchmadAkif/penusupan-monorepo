@@ -44,9 +44,8 @@ export function NewsFeed({
 
   const isDatabaseEmpty = articles.length === 0;
 
-  // Split featured latest article and remaining articles
+  // Top featured latest article
   const featuredArticle = filteredArticles[0];
-  const remainingArticles = filteredArticles.slice(1);
 
   return (
     <section className={`py-12 lg:py-16 ${className || ''}`}>
@@ -102,30 +101,28 @@ export function NewsFeed({
                     <NewsFeaturedCard article={featuredArticle} />
                   )}
 
-                  {/* ── 2. Remaining Articles Section Grid ── */}
-                  {remainingArticles.length > 0 && (
-                    <div className="space-y-6">
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-1.5 h-6 bg-gold rounded-full shrink-0" />
-                        <h3 className="font-heading font-bold text-xl sm:text-2xl text-navy">
-                          {selectedCategory === 'Semua' && !searchQuery
-                            ? 'Artikel Terbaru'
-                            : 'Artikel Terkait Lainnya'}
-                        </h3>
-                      </div>
-
-                      <motion.div
-                        variants={staggerContainer}
-                        initial="hidden"
-                        animate="visible"
-                        className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
-                      >
-                        {remainingArticles.map((news) => (
-                          <NewsCard key={news.id} news={news} />
-                        ))}
-                      </motion.div>
+                  {/* ── 2. All Articles Section Grid (Includes the full array) ── */}
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-1.5 h-6 bg-gold rounded-full shrink-0" />
+                      <h3 className="font-heading font-bold text-xl sm:text-2xl text-navy">
+                        {selectedCategory === 'Semua' && !searchQuery
+                          ? 'Artikel Terbaru'
+                          : 'Daftar Artikel'}
+                      </h3>
                     </div>
-                  )}
+
+                    <motion.div
+                      variants={staggerContainer}
+                      initial="hidden"
+                      animate="visible"
+                      className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
+                    >
+                      {filteredArticles.map((news) => (
+                        <NewsCard key={news.id} news={news} />
+                      ))}
+                    </motion.div>
+                  </div>
                 </div>
               ) : isDatabaseEmpty ? (
                 /* ── EMPTY STATE 1: DATABASE COMPLETELY EMPTY ── */
