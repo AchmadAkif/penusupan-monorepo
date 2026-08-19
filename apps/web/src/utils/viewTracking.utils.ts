@@ -10,13 +10,9 @@
  * 3. Run the Supabase trigger SQL (see below) to auto-update view_count
  */
 
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from './supabase/client';
 
-// Initialize Supabase client (configure with your landing site's env)
-const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+const supabase = createClient();
 
 /**
  * Generate a unique visitor ID based on browser fingerprint
@@ -53,7 +49,7 @@ const getVisitorId = (): string => {
  * @param articleId - The ID of the article being viewed
  * @returns true if this was a new view, false if already counted
  */
-export const trackArticleView = async (articleId: number): Promise<boolean> => {
+export const trackArticleView = async (articleId: string): Promise<boolean> => {
     const visitorId = getVisitorId();
     if (!visitorId) return false;
     

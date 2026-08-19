@@ -311,16 +311,7 @@ export const DEFAULT_LATEST_NEWS: NewsItem[] = [
   },
 ];
 
-export const DEFAULT_NEWS_CATEGORIES: string[] = [
-  'Semua',
-  'Pertanian',
-  'Pembangunan',
-  'Ekonomi & UMKM',
-  'Kesehatan',
-  'Budaya',
-];
 
-export const DEFAULT_NEWS_DATA: NewsItem[] = DEFAULT_LATEST_NEWS;
 
 
 

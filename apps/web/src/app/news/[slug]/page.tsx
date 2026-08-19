@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import {
   Calendar,
@@ -10,12 +10,13 @@ import {
   Share2,
   ChevronRight,
   Eye,
-  Tag,
   BookOpen,
 } from 'lucide-react';
-import { NewsSidebar } from '@/components/news';
+import { NewsSidebar, ViewTracker } from '@/components/news';
 import { NewsCard } from '@/components/home/news/NewsCard';
-import { DEFAULT_NEWS_DATA, DEFAULT_NEWS_CATEGORIES } from '@/constants/seedData';
+import { createClient } from '@/utils/supabase/server';
+import { calculateReadTime } from '@/utils/readTime.utils';
+import { NewsItem } from '@/types/news';
 
 interface NewsDetailPageProps {
   params: Promise<{
@@ -23,46 +24,113 @@ interface NewsDetailPageProps {
   }>;
 }
 
-export async function generateStaticParams() {
-  return DEFAULT_NEWS_DATA.map((article) => ({
-    slug: article.slug,
-  }));
+export const revalidate = 60; // Revalidate every 60 seconds
+
+function formatDate(dateStr: string | null): string {
+  if (!dateStr) return '';
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
 }
 
-export async function generateMetadata({
-  params,
-}: NewsDetailPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const article = DEFAULT_NEWS_DATA.find((a) => a.slug === slug);
-
-  if (!article) {
-    return {
-      title: 'Artikel Tidak Ditemukan',
-    };
-  }
-
-  return {
-    title: `${article.title} - Warta Desa Penusupan`,
-    description: article.excerpt,
-  };
-}
 
 export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
   const { slug } = await params;
-  const article = DEFAULT_NEWS_DATA.find((a) => a.slug === slug);
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
 
-  if (!article) {
+  // 1. Fetch main article by slug
+  const { data: articleRow } = await supabase
+    .from('articles')
+    .select(`
+      id,
+      title,
+      slug,
+      excerpt,
+      content,
+      cover_image_url,
+      author,
+      read_time,
+      view_count,
+      published_at,
+      category_id,
+      category:article_categories(name)
+    `)
+    .eq('slug', slug)
+    .single();
+
+  if (!articleRow) {
     notFound();
   }
 
-  // Related articles (same category or general, excluding current)
-  const relatedArticles = DEFAULT_NEWS_DATA.filter((a) => a.id !== article.id).slice(
-    0,
-    2
-  );
+  const article: NewsItem = {
+    id: articleRow.id,
+    title: articleRow.title,
+    slug: articleRow.slug,
+    excerpt: articleRow.excerpt,
+    content: articleRow.content,
+    category: (articleRow.category as any)?.name || 'Umum',
+    publishedAt: formatDate(articleRow.published_at),
+    author: articleRow.author || 'Pemerintah Desa',
+    readTime: articleRow.content ? calculateReadTime(articleRow.content) : (articleRow.read_time || 3),
+    imageUrl: articleRow.cover_image_url,
+    viewCount: articleRow.view_count || 0,
+  };
+
+  // 2. Fetch Related articles (same category or recent)
+  const { data: relatedRows } = await supabase
+    .from('articles')
+    .select(`
+      id,
+      title,
+      slug,
+      excerpt,
+      content,
+      cover_image_url,
+      author,
+      read_time,
+      view_count,
+      published_at,
+      category:article_categories(name)
+    `)
+    .neq('slug', slug)
+    .not('published_at', 'is', null)
+    .lte('published_at', new Date().toISOString())
+    .limit(2);
+
+  const relatedArticles: NewsItem[] = (relatedRows || []).map((item: any) => ({
+    id: item.id,
+    title: item.title,
+    slug: item.slug,
+    excerpt: item.excerpt,
+    content: item.content,
+    category: item.category?.name || 'Umum',
+    publishedAt: formatDate(item.published_at),
+    author: item.author || 'Pemerintah Desa',
+    readTime: item.content ? calculateReadTime(item.content) : (item.read_time || 3),
+    imageUrl: item.cover_image_url || '/images/news-hortikultura.svg',
+    viewCount: item.view_count || 0,
+  }));
+
+  // 3. Fetch Categories for Sidebar
+  const { data: categoriesData } = await supabase
+    .from('article_categories')
+    .select('name')
+    .order('name', { ascending: true });
+
+  const categories: string[] = [
+    'Semua',
+    ...(categoriesData ? categoriesData.map((c) => c.name) : []),
+  ];
 
   return (
     <div className="min-h-screen bg-linen pt-28 pb-20">
+      {/* ── Client View Tracker ── */}
+      <ViewTracker articleId={article.id} />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
         {/* ── Breadcrumb Navigation ── */}
@@ -194,8 +262,8 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
           {/* ════ RIGHT COLUMN: SIDEBAR (4 Cols) ════ */}
           <div className="lg:col-span-4">
             <NewsSidebar
-              categories={DEFAULT_NEWS_CATEGORIES}
-              popularArticles={DEFAULT_NEWS_DATA}
+              categories={categories}
+              popularArticles={relatedArticles}
             />
           </div>
 
