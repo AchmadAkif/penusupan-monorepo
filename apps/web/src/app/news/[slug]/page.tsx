@@ -140,7 +140,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
               {/* Article Paragraphs Body */}
               <div className="space-y-5 text-stone-700 text-base sm:text-lg leading-relaxed font-body">
                 {article.content ? (
-                  article.content.map((p, idx) => (
+                  article.content.map((p: string, idx: number) => (
                     <p
                       key={idx}
                       className={
@@ -165,7 +165,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
                     <span>Kata Kunci Terkait</span>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {article.tags.map((tag) => (
+                    {article.tags.map((tag: string) => (
                       <span
                         key={tag}
                         className="px-3 py-1 rounded-full bg-stone-100 text-stone-700 text-xs font-medium hover:bg-navy hover:text-white transition-colors cursor-pointer"

@@ -1,4 +1,6 @@
 import type { LucideIcon } from 'lucide-react';
+import type { NewsItem } from './news';
+
 
 export interface StatItem {
   icon: LucideIcon;
@@ -100,22 +102,6 @@ export interface GeographySectionProps {
   ctaLabel?: string;
   ctaHref?: string;
   className?: string;
-}
-
-export interface NewsItem {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt: string;
-  content?: string[];
-  category: string;
-  publishedAt: string;
-  author: string;
-  readTime: string;
-  imageUrl: string;
-  viewCount?: number;
-  isFeatured?: boolean;
-  tags?: string[];
 }
 
 export interface NewsCardProps {
