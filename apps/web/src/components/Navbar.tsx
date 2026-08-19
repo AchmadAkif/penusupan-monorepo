@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
@@ -13,14 +13,23 @@ import { NavLink } from '@/components/NavLink';
 import { MobileNavDrawer } from '@/components/MobileNavDrawer';
 import type { NavbarProps } from '@/types/navigation';
 
+// Pages that feature a dark hero banner at the top
+const PAGES_WITH_DARK_HERO = ['/', '/profile', '/businesses', '/news'];
+
 export function Navbar({
   links = NAV_LINKS,
   cta = DEFAULT_CTA_LINK,
   className,
   threshold = 20,
 }: NavbarProps) {
+  const pathname = usePathname();
   const scrolled = useScrollThreshold(threshold);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Check if current route has a dark hero background
+  const hasDarkHero = PAGES_WITH_DARK_HERO.includes(pathname);
+  // Text should be dark if user has scrolled OR if the page doesn't have a dark hero
+  const useDarkText = scrolled || !hasDarkHero;
 
   return (
     <>
@@ -40,7 +49,7 @@ export function Navbar({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* ── Brand Logo ── */}
-            <BrandLogo scrolled={scrolled} onClick={() => setMenuOpen(false)} />
+            <BrandLogo scrolled={useDarkText} onClick={() => setMenuOpen(false)} />
 
             {/* ── Desktop Navigation Links ── */}
             <nav
@@ -52,7 +61,7 @@ export function Navbar({
                   key={link.href}
                   href={link.href}
                   label={link.label}
-                  scrolled={scrolled}
+                  scrolled={useDarkText}
                   variant="desktop"
                 />
               ))}
@@ -63,7 +72,7 @@ export function Navbar({
               type="button"
               className={cn(
                 'lg:hidden p-2 rounded-lg transition-all duration-200',
-                scrolled
+                useDarkText
                   ? 'text-navy hover:bg-navy/5'
                   : 'text-white hover:bg-white/10',
               )}
