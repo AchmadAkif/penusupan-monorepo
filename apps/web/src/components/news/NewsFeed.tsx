@@ -30,8 +30,7 @@ export function NewsFeed({
         !q ||
         article.title.toLowerCase().includes(q) ||
         article.excerpt.toLowerCase().includes(q) ||
-        article.category.toLowerCase().includes(q) ||
-        article.tags?.some((t) => t.toLowerCase().includes(q));
+        article.category.toLowerCase().includes(q);
 
       return matchCategory && matchSearch;
     });

@@ -3,15 +3,13 @@ export interface NewsItem {
   title: string;
   slug: string;
   excerpt: string;
-  content?: string[];
+  content?: string;
   category: string;
   publishedAt: string;
   author: string;
-  readTime: string;
+  readTime: number;
   imageUrl: string;
   viewCount?: number;
-  isFeatured?: boolean;
-  tags?: string[];
 }
 
 export interface NewsPageData {

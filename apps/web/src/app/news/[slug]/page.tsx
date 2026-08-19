@@ -64,7 +64,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
   return (
     <div className="min-h-screen bg-linen pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        
+
         {/* ── Breadcrumb Navigation ── */}
         <nav className="flex items-center gap-2 text-xs sm:text-sm text-stone-500 font-medium overflow-x-auto py-2">
           <Link href="/" className="hover:text-navy transition-colors shrink-0">
@@ -82,11 +82,11 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
 
         {/* ── 2-Column Reader Layout ── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          
+
           {/* ════ LEFT COLUMN: ARTICLE CONTENT (8 Cols) ════ */}
           <main className="lg:col-span-8 space-y-8">
             <article className="rounded-3xl bg-white border border-stone-200/90 p-6 sm:p-10 shadow-xs space-y-8">
-              
+
               {/* Category & Title Header */}
               <div className="space-y-4">
                 <span className="inline-flex items-center px-3 py-1 rounded-full bg-navy/5 text-navy text-xs font-semibold border border-navy/15">
@@ -109,7 +109,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
                   </div>
                   <div className="flex items-center gap-1.5">
                     <Clock size={15} className="text-stone-400" />
-                    <span>{article.readTime}</span>
+                    <span>{article.readTime} mnt baca</span>
                   </div>
                   {article.viewCount !== undefined && (
                     <div className="flex items-center gap-1.5 text-gold-dark font-semibold">
@@ -140,42 +140,11 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
               {/* Article Paragraphs Body */}
               <div className="space-y-5 text-stone-700 text-base sm:text-lg leading-relaxed font-body">
                 {article.content ? (
-                  article.content.map((p: string, idx: number) => (
-                    <p
-                      key={idx}
-                      className={
-                        idx === 0
-                          ? 'first-letter:float-left first-letter:text-5xl first-letter:pr-3 first-letter:font-heading first-letter:font-extrabold first-letter:text-navy first-letter:leading-none'
-                          : ''
-                      }
-                    >
-                      {p}
-                    </p>
-                  ))
+                  <div dangerouslySetInnerHTML={{ __html: article.content }} />
                 ) : (
                   <p>{article.excerpt}</p>
                 )}
               </div>
-
-              {/* Tags Section */}
-              {article.tags && article.tags.length > 0 && (
-                <div className="pt-6 border-t border-stone-100 space-y-3">
-                  <div className="flex items-center gap-2 text-xs font-bold text-stone-500 uppercase tracking-wider">
-                    <Tag size={13} className="text-gold" />
-                    <span>Kata Kunci Terkait</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {article.tags.map((tag: string) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 rounded-full bg-stone-100 text-stone-700 text-xs font-medium hover:bg-navy hover:text-white transition-colors cursor-pointer"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
 
               {/* Action Buttons: Back & Share */}
               <div className="pt-6 border-t border-stone-100 flex items-center justify-between">

@@ -44,7 +44,7 @@ export function NewsCard({ news, className = '' }: NewsCardProps) {
             <span>•</span>
             <div className="flex items-center gap-1.5">
               <Clock size={13} className="text-stone-400" />
-              <span>{news.readTime}</span>
+              <span>{news.readTime} mnt baca</span>
             </div>
             {news.viewCount !== undefined && (
               <>

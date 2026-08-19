@@ -63,14 +63,6 @@ export function BusinessCard({
               <h3 className="font-heading font-extrabold text-lg sm:text-xl text-navy leading-snug group-hover:text-gold-dark transition-colors">
                 {business.name}
               </h3>
-              {business.isVerified && (
-                <span
-                  title="Usaha Terverifikasi Desa"
-                  className="shrink-0 p-1 rounded-full bg-amber-50 text-gold-dark border border-gold/30 mt-0.5"
-                >
-                  <ShieldCheck size={14} />
-                </span>
-              )}
             </div>
 
             {/* Owner & Dusun Meta */}

@@ -6,3 +6,4 @@ dist
 .env.local
 .env*.local
 implementation_plan.md
+database_schema.md
