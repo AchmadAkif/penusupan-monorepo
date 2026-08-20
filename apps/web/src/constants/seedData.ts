@@ -25,8 +25,14 @@ import type {
   VisionMissionData,
   DemographicSectionData,
   GeographyMetricItem,
-  NewsItem,
 } from '@/types/home';
+import type { NewsItem } from '@/types/news';
+import type {
+  VillageOrgStructure,
+  VillageHistoryData,
+} from '@/types/profile';
+import type { BusinessItem } from '@/types/businesses';
+
 
 // ── 1. Hero Section Default Data ──
 export const DEFAULT_HERO_DATA: Required<HeroSectionProps> = {
@@ -68,14 +74,14 @@ export const DEFAULT_VILLAGE_STATS: StatItem[] = [
 
 // ── 3. Village Head Greeting & Info ──
 export const DEFAULT_VILLAGE_HEAD: Required<VillageHeadGreetingProps> = {
-  name: 'Kepala Desa Penusupan',
+  name: 'Budi Indarto',
   role: 'Kepala Desa',
   period: 'Masa Bakti 2019 – 2025',
   photoUrl: '/images/village-head-placeholder.svg',
   greetingTitle:
     'Mewujudkan Desa Penusupan yang Maju, Transparan, dan Sejahtera',
   signatureText: 'Salam Hangat & Gotong Royong,',
-  profileHref: '/profile',
+  profileHref: '/profile#struktur',
   paragraphs: [
     'Puji syukur senantiasa kita panjatkan ke hadirat Tuhan Yang Maha Esa atas limpahan rahmat dan karunia-Nya, sehingga website resmi Desa Penusupan ini dapat hadir sebagai jembatan komunikasi dan keterbukaan informasi publik bagi seluruh warga masyarakat.',
     'Di era transformasi digital ini, kami berkomitmen untuk mewujudkan tata kelola pemerintahan desa yang transparan, akuntabel, dan berorientasi pada pelayanan prima. Website ini dirancang agar masyarakat dapat mengakses layanan administrasi, memantau perkembangan pembangunan desa, serta mengeksplorasi potensi pertanian dan UMKM unggulan kami dengan mudah.',
@@ -221,43 +227,130 @@ export const DEFAULT_GEOGRAPHY_METRICS: GeographyMetricItem[] = [
   },
 ];
 
-// ── 8. Latest News Default Data ──
-export const DEFAULT_LATEST_NEWS: NewsItem[] = [
-  {
-    id: 'news-1',
-    title: 'Panen Raya Komoditas Hortikultura Desa Penusupan Tembus Rekor Produktivitas',
-    slug: 'panen-raya-hortikultura-penusupan',
-    excerpt:
-      'Petani Desa Penusupan mencatatkan kenaikan hasil panen kentang dan kubis berkat penerapan teknik pertanian berkelanjutan dan pemanfaatan pupuk organik lokal.',
-    category: 'Pertanian',
-    publishedAt: '16 Agu 2026',
-    author: 'Tim Redaksi Desa',
-    readTime: '3 mnt baca',
-    imageUrl: '/images/news-hortikultura.svg',
-    isFeatured: true,
+
+
+
+
+
+// ── 9. Organizational Structure Default Data (Real Official Data) ──
+export const DEFAULT_ORG_STRUCTURE: VillageOrgStructure = {
+  head: {
+    id: 'kades',
+    name: 'Budi Indarto',
+    role: 'Kepala Desa',
+    category: 'pimpinan',
+    photoUrl: '/images/village-head-placeholder.svg',
+    hierarchyLevel: 1,
   },
-  {
-    id: 'news-2',
-    title: 'Pembangunan Akses Jalan Usaha Tani Dusun III Selesai, Permudah Distribusi Hasil Bumi',
-    slug: 'pembangunan-jalan-usaha-tani-selesai',
-    excerpt:
-      'Pemerintah Desa Penusupan meresmikan pembukaan dan pengaspalan jalan usaha tani sepanjang 1,2 km guna memperlancar mobilitas para petani menuju lahan perkebunan.',
-    category: 'Pembangunan',
-    publishedAt: '12 Agu 2026',
-    author: 'Pemerintah Desa',
-    readTime: '4 mnt baca',
-    imageUrl: '/images/news-jalan-desa.svg',
+  secretary: {
+    id: 'sekdes',
+    name: 'Ovik Suprayitno',
+    role: 'Sekretaris Desa',
+    category: 'pimpinan',
+    hierarchyLevel: 2,
   },
-  {
-    id: 'news-3',
-    title: 'Pelatihan Digitalisasi & Inovasi Kemasan Produk UMKM Olahan Desa Penusupan',
-    slug: 'pelatihan-digitalisasi-kemasan-umkm',
-    excerpt:
-      'Sebanyak 35 pelaku UMKM desa mengikuti workshop peningkatan daya saing produk lokal, standarisasi kemasan modern, dan onboarding platform digital.',
-    category: 'Ekonomi & UMKM',
-    publishedAt: '08 Agu 2026',
-    author: 'Pokdarwis & UMKM',
-    readTime: '3 mnt baca',
-    imageUrl: '/images/news-umkm-digital.svg',
-  },
-];
+  kaurs: [
+    {
+      id: 'kaur-1',
+      name: 'Jana',
+      role: 'Kaur Perencanaan',
+      category: 'sekretariat',
+      hierarchyLevel: 3,
+    },
+    {
+      id: 'kaur-2',
+      name: 'Heli Susanto',
+      role: 'Kaur Tata Usaha & Umum',
+      category: 'sekretariat',
+      hierarchyLevel: 3,
+    },
+    {
+      id: 'kaur-3',
+      name: 'Santi Wiji Jayanti, S.Pd',
+      role: 'Kaur Keuangan',
+      category: 'sekretariat',
+      hierarchyLevel: 3,
+    },
+  ],
+  kasis: [
+    {
+      id: 'kasi-1',
+      name: 'Baidowi',
+      role: 'Kasi Pemerintahan',
+      category: 'teknis',
+      hierarchyLevel: 3,
+    },
+    {
+      id: 'kasi-2',
+      name: 'Nurwahyuni',
+      role: 'Kasi Pelayanan',
+      category: 'teknis',
+      hierarchyLevel: 3,
+    },
+    {
+      id: 'kasi-3',
+      name: 'Yunita Septa Dewi',
+      role: 'Kasi Kesejahteraan',
+      category: 'teknis',
+      hierarchyLevel: 3,
+    },
+  ],
+  kaduses: [
+    {
+      id: 'kadus-1',
+      name: 'Suwadi',
+      role: 'Kadus I',
+      category: 'kewilayahan',
+      hierarchyLevel: 4,
+    },
+    {
+      id: 'kadus-2',
+      name: 'Slamet',
+      role: 'Kadus II',
+      category: 'kewilayahan',
+      hierarchyLevel: 4,
+    },
+    {
+      id: 'kadus-3',
+      name: 'Miswanto',
+      role: 'Kadus III',
+      category: 'kewilayahan',
+      hierarchyLevel: 4,
+    },
+    {
+      id: 'kadus-4',
+      name: 'Rudi Darmawan',
+      role: 'Kadus IV',
+      category: 'kewilayahan',
+      hierarchyLevel: 4,
+    },
+    {
+      id: 'kadus-5',
+      name: 'Tanton Riyo Fernandi',
+      role: 'Kadus V',
+      category: 'kewilayahan',
+      hierarchyLevel: 4,
+    },
+  ],
+};
+
+// ── 10. Village History Default Narrative ──
+export const DEFAULT_VILLAGE_HISTORY: VillageHistoryData = {
+  title: 'Menelusuri Jejak Langkah & Warisan Leluhur',
+  subtitle:
+    'Rangkaian kisah perjalanan sejarah, kearifan lokal, dan nilai luhur gotong royong yang membentuk identitas Desa Penusupan.',
+  paragraphs: [
+    'Keberadaan Desa Penusupan tidak terlepas dari kisah perjalanan panjang para sesepuh pendahulu yang membuka permukiman di kawasan lembah pegunungan yang subur ini. Nama "Penusupan" secara turun-temurun diyakini sarat akan makna filosofis mengenai keteguhan, ketenangan alam, dan ikatan kekerabatan masyarakat yang erat dalam menjaga keharmonisan lingkungan.',
+    'Seiring berjalannya waktu dan pergantian generasi, Desa Penusupan terus bertransformasi dari sebuah permukiman agraris tradisional menjadi desa yang mandiri, berdaya, dan terbuka terhadap kemajuan. Nilai-nilai kearifan lokal seperti gotong royong, musyawarah mufakat, serta penghormatan terhadap alam tetap menjadi fondasi utama yang mendasari setiap gerak langkah pembangunan desa.',
+    'Saat ini, pemerintah desa bersama seluruh elemen masyarakat dan tokoh adat terus mendokumentasikan serta menghimpun arsip sejarah resmi desa secara komprehensif, guna memastikan warisan nilai luhur ini dapat terus dipelajari dan diwariskan dengan bangga kepada generasi mendatang.',
+  ],
+  imageUrl: '/images/village-history.svg',
+  imageCaption: 'Bentang alam lembah dan harmoni kehidupan masyarakat Desa Penusupan.',
+  quote:
+    'Menjaga warisan luhur para pendahulu, melangkah bersama membangun masa depan desa yang berdaulat dan sejahtera.',
+};
+
+
+
+
+

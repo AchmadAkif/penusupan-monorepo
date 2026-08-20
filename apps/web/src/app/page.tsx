@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers';
 import { HeroSection } from '@/components/home/HeroSection';
 import { StatsBar } from '@/components/home/StatsBar';
 import { VillageHeadGreeting } from '@/components/home/VillageHeadGreeting';
@@ -6,8 +7,61 @@ import { VisionMissionSection } from '@/components/home/vision-mission';
 import { DemographicSection } from '@/components/home/DemographicSection';
 import { GeographySection } from '@/components/home/GeographySection';
 import { LatestNewsSection } from '@/components/home/news';
+import { createClient } from '@/utils/supabase/server';
+import { calculateReadTime } from '@/utils/readTime.utils';
+import type { NewsItem } from '@/types/news';
 
-export default function HomePage() {
+export const revalidate = 60;
+
+function formatDate(dateStr: string | null): string {
+  if (!dateStr) return '';
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+}
+
+export default async function HomePage() {
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
+
+  // Fetch the latest 3 published articles for the 1-row grid
+  const { data: articlesData } = await supabase
+    .from('articles')
+    .select(`
+      id,
+      title,
+      slug,
+      excerpt,
+      content,
+      cover_image_url,
+      author,
+      read_time,
+      view_count,
+      published_at,
+      category:article_categories(name)
+    `)
+    .not('published_at', 'is', null)
+    .lte('published_at', new Date().toISOString())
+    .order('published_at', { ascending: false })
+    .limit(3);
+
+  const latestNews: NewsItem[] = (articlesData || []).map((item: any) => ({
+    id: item.id,
+    title: item.title,
+    slug: item.slug,
+    excerpt: item.excerpt,
+    content: item.content,
+    category: item.category?.name || 'Umum',
+    publishedAt: formatDate(item.published_at),
+    author: item.author || 'Pemerintah Desa',
+    readTime: item.content ? calculateReadTime(item.content) : (item.read_time || 3),
+    imageUrl: item.cover_image_url || '/images/news-hortikultura.svg',
+    viewCount: item.view_count || 0,
+  }));
+
   return (
     <main className="min-h-screen bg-linen">
       {/* ── 1. Hero Section ── */}
@@ -32,7 +86,7 @@ export default function HomePage() {
       <GeographySection />
 
       {/* ── 8. Berita & Liputan Terkini (Latest News) ── */}
-      <LatestNewsSection />
+      <LatestNewsSection news={latestNews} />
     </main>
   );
 }
