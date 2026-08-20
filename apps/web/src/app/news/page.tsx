@@ -68,7 +68,7 @@ export default async function NewsPage() {
     publishedAt: formatDate(item.published_at),
     author: item.author || 'Pemerintah Desa',
     readTime: item.content ? calculateReadTime(item.content) : (item.read_time || 3),
-    imageUrl: item.cover_image_url || '/images/news-hortikultura.svg',
+    imageUrl: item.cover_image_url || '/images/news-placeholder.svg',
     viewCount: item.view_count || 0,
   }));
 
