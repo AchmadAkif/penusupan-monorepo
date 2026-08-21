@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   Card,
   TableContainer,
@@ -7,12 +7,14 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  TablePagination,
   Typography,
   IconButton,
   Tooltip,
   Box,
   Skeleton,
   Chip,
+  Divider,
 } from '@mui/material';
 import { Edit3, Trash2, FolderPlus, Tags } from 'lucide-react';
 import type { ArticleCategory } from '../../types/category';
@@ -32,6 +34,30 @@ export const CategoryTable: React.FC<CategoryTableProps> = ({
   onDelete,
   onAddClick,
 }) => {
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  // Ensure page resets to 0 if data changes and current page is out of bounds
+  useEffect(() => {
+    if (page > 0 && page * rowsPerPage >= categories.length) {
+      setPage(0);
+    }
+  }, [categories.length, page, rowsPerPage]);
+
+  const handleChangePage = (_event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  // Slice paginated items
+  const paginatedCategories = useMemo(() => {
+    return categories.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+  }, [categories, page, rowsPerPage]);
+
   return (
     <Card
       sx={{
@@ -67,7 +93,7 @@ export const CategoryTable: React.FC<CategoryTableProps> = ({
           <TableBody>
             {isLoading ? (
               // Loading Skeleton Rows
-              Array.from({ length: 4 }).map((_, index) => (
+              Array.from({ length: rowsPerPage }).map((_, index) => (
                 <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell sx={{ px: 3, py: 2.5 }}>
                     <Skeleton variant="text" width={140} height={24} />
@@ -140,8 +166,8 @@ export const CategoryTable: React.FC<CategoryTableProps> = ({
                 </TableCell>
               </TableRow>
             ) : (
-              // Active Categories List
-              categories.map((category) => (
+              // Paginated Categories List
+              paginatedCategories.map((category) => (
                 <TableRow
                   key={category.id}
                   sx={{
@@ -227,6 +253,39 @@ export const CategoryTable: React.FC<CategoryTableProps> = ({
           </TableBody>
         </Table>
       </TableContainer>
+
+      {/* Pagination Footer */}
+      {!isLoading && categories.length > 0 && (
+        <>
+          <Divider sx={{ borderColor: '#F0EFEA' }} />
+          <TablePagination
+            component="div"
+            count={categories.length}
+            page={page}
+            onPageChange={handleChangePage}
+            rowsPerPage={rowsPerPage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+            rowsPerPageOptions={[5, 10, 25]}
+            labelRowsPerPage="Baris per halaman:"
+            labelDisplayedRows={({ from, to, count }) =>
+              `${from}–${to} dari ${count !== -1 ? count : `lebih dari ${to}`}`
+            }
+            sx={{
+              px: 2,
+              py: 0.5,
+              color: '#78716C',
+              '& .MuiTablePagination-select': {
+                fontWeight: 600,
+                fontSize: '0.85rem',
+              },
+              '& .MuiTablePagination-displayedRows': {
+                fontWeight: 600,
+                fontSize: '0.85rem',
+              },
+            }}
+          />
+        </>
+      )}
     </Card>
   );
 };
