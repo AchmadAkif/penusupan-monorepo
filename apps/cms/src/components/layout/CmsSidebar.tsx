@@ -10,6 +10,8 @@ import {
   ListItemText,
   Avatar,
   Divider,
+  IconButton,
+  Tooltip,
 } from '@mui/material';
 import {
   LayoutDashboard,
@@ -19,7 +21,10 @@ import {
   Megaphone,
   Landmark,
   Users,
+  LogOut,
 } from 'lucide-react';
+import { useAppSelector } from '../../store/hooks';
+import { supabase } from '../../lib/supabase';
 
 interface NavItem {
   label: string;
@@ -39,6 +44,15 @@ const NAV_ITEMS: NavItem[] = [
 
 export const CmsSidebar: React.FC = () => {
   const location = useLocation();
+  const { user } = useAppSelector((state) => state.auth);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+  };
+
+  // Derive display initials from user email
+  const userEmail = user?.email || 'admin@penusupan.desa.id';
+  const userInitials = userEmail.substring(0, 2).toUpperCase();
 
   return (
     <Box
@@ -174,7 +188,7 @@ export const CmsSidebar: React.FC = () => {
 
       <Divider sx={{ my: 2, borderColor: 'rgba(255, 255, 255, 0.1)' }} />
 
-      {/* Admin User Profile Snippet */}
+      {/* Admin User Profile Snippet & Logout */}
       <Box
         sx={{
           p: 1.5,
@@ -192,10 +206,10 @@ export const CmsSidebar: React.FC = () => {
             bgcolor: '#CA8A04',
             color: '#1E1B4B',
             fontWeight: 800,
-            fontSize: '0.9rem',
+            fontSize: '0.85rem',
           }}
         >
-          AD
+          {userInitials}
         </Avatar>
         <Box sx={{ overflow: 'hidden', flexGrow: 1 }}>
           <Typography
@@ -207,21 +221,40 @@ export const CmsSidebar: React.FC = () => {
               whiteSpace: 'nowrap',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
+              fontSize: '0.82rem',
             }}
           >
-            Admin Desa
+            {user?.email?.split('@')[0] || 'Admin Desa'}
           </Typography>
           <Typography
             variant="caption"
             sx={{
               color: '#94A3B8',
-              fontSize: '0.72rem',
+              fontSize: '0.7rem',
               display: 'block',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
             }}
           >
-            Pemerintah Desa
+            {userEmail}
           </Typography>
         </Box>
+        <Tooltip title="Keluar dari Panel">
+          <IconButton
+            size="small"
+            onClick={handleLogout}
+            sx={{
+              color: '#94A3B8',
+              '&:hover': {
+                color: '#EF4444',
+                bgcolor: 'rgba(239, 68, 68, 0.1)',
+              },
+            }}
+          >
+            <LogOut size={18} />
+          </IconButton>
+        </Tooltip>
       </Box>
     </Box>
   );
