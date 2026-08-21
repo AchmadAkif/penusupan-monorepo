@@ -10,6 +10,7 @@ import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { CmsLayout } from './components/layout/CmsLayout';
 import { DashboardPage } from './pages/Dashboard';
 import { LoginPage } from './pages/Login';
+import { CategoriesManagerPage } from './pages/CategoriesManager';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -53,7 +54,7 @@ export default function App() {
                         <Routes>
                           <Route path="/" element={<DashboardPage />} />
                           <Route path="/articles" element={<PlaceholderPage title="Berita & Artikel" />} />
-                          <Route path="/categories" element={<PlaceholderPage title="Kategori Berita" />} />
+                          <Route path="/categories" element={<CategoriesManagerPage />} />
                           <Route path="/businesses" element={<PlaceholderPage title="UMKM Desa" />} />
                           <Route path="/announcements" element={<PlaceholderPage title="Pengumuman" />} />
                           <Route path="/profile" element={<PlaceholderPage title="Profil Desa" />} />
