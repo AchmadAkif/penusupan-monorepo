@@ -1,23 +1,52 @@
-import { useEffect, useState } from 'react'
-import { supabase } from './lib/supabase'
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { ThemeProvider, CssBaseline, Box, Typography } from '@mui/material';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { cmsTheme } from './theme/theme';
+import { CmsLayout } from './components/layout/CmsLayout';
+import { DashboardPage } from './pages/Dashboard';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+    },
+  },
+});
+
+// Placeholder for yet-to-be-built pages to ensure seamless navigation
+const PlaceholderPage: React.FC<{ title: string }> = ({ title }) => (
+  <Box sx={{ p: 4 }}>
+    <Typography variant="h4" sx={{ fontWeight: 800, color: '#1E1B4B', mb: 1 }}>
+      {title}
+    </Typography>
+    <Typography variant="body1" sx={{ color: '#78716C' }}>
+      Modul manajemen {title} sedang dalam pengembangan.
+    </Typography>
+  </Box>
+);
 
 export default function App() {
-  const [articles, setArticles] = useState([])
-
-  useEffect(() => {
-    async function getArticles() {
-      const { data: articles } = await supabase.from('articles').select()
-      setArticles(articles)
-    }
-
-    getArticles()
-  }, [])
-
   return (
-    <ul>
-      {articles.map((article) => (
-        <li key={article.id}>{article.title}</li>
-      ))}
-    </ul>
-  )
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={cmsTheme}>
+        <CssBaseline />
+        <BrowserRouter>
+          <CmsLayout>
+            <Routes>
+              <Route path="/" element={<DashboardPage />} />
+              <Route path="/articles" element={<PlaceholderPage title="Berita & Artikel" />} />
+              <Route path="/categories" element={<PlaceholderPage title="Kategori Berita" />} />
+              <Route path="/businesses" element={<PlaceholderPage title="UMKM Desa" />} />
+              <Route path="/announcements" element={<PlaceholderPage title="Pengumuman" />} />
+              <Route path="/profile" element={<PlaceholderPage title="Profil Desa" />} />
+              <Route path="/officials" element={<PlaceholderPage title="Perangkat Desa" />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </CmsLayout>
+        </BrowserRouter>
+      </ThemeProvider>
+    </QueryClientProvider>
+  );
 }
