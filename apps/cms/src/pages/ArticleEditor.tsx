@@ -10,7 +10,6 @@ import {
   Alert,
   InputBase,
   Chip,
-  Typography,
 } from '@mui/material';
 import { ArrowLeft, Settings, Save, Image as ImageIcon, Trash2, UploadCloud } from 'lucide-react';
 import ReactQuill from 'react-quill-new';

@@ -13,6 +13,8 @@ import { LoginPage } from './pages/Login';
 import { CategoriesManagerPage } from './pages/CategoriesManager';
 import { ArticlesManagerPage } from './pages/ArticlesManager';
 import { ArticleEditorPage } from './pages/ArticleEditor';
+import { UmkmManagerPage } from './pages/UmkmManager';
+import { UmkmEditorPage } from './pages/UmkmEditor';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -59,7 +61,12 @@ export default function App() {
                           <Route path="/articles/new" element={<ArticleEditorPage />} />
                           <Route path="/articles/edit/:id" element={<ArticleEditorPage />} />
                           <Route path="/categories" element={<CategoriesManagerPage />} />
-                          <Route path="/businesses" element={<PlaceholderPage title="UMKM Desa" />} />
+                          <Route path="/businesses" element={<UmkmManagerPage />} />
+                          <Route path="/businesses/new" element={<UmkmEditorPage />} />
+                          <Route path="/businesses/edit/:id" element={<UmkmEditorPage />} />
+                          <Route path="/umkm" element={<Navigate to="/businesses" replace />} />
+                          <Route path="/umkm/new" element={<Navigate to="/businesses/new" replace />} />
+                          <Route path="/umkm/edit/:id" element={<UmkmEditorPage />} />
                           <Route path="/announcements" element={<PlaceholderPage title="Pengumuman" />} />
                           <Route path="/profile" element={<PlaceholderPage title="Profil Desa" />} />
                           <Route path="/officials" element={<PlaceholderPage title="Perangkat Desa" />} />
