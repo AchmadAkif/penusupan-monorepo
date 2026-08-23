@@ -40,6 +40,7 @@ export const DEFAULT_HERO_DATA: Required<HeroSectionProps> = {
   title: 'Harmoni Tradisi, Menuju Desa Berdaya & Sejahtera',
   subtitle:
     'Selamat datang di portal informasi resmi Desa Penusupan, Kecamatan Pejawaran, Kabupaten Banjarnegara. Temukan layanan, potensi UMKM, berita terkini, dan profil desa.',
+  imageUrl: '/images/DSC04016.webp',
   primaryCta: { label: 'Jelajahi Profil', href: '/profile' },
   secondaryCta: { label: 'Potensi UMKM', href: '/businesses' },
 };
@@ -99,6 +100,7 @@ export const DEFAULT_VILLAGE_PROFILE: VillageProfileData = {
     'Desa Penusupan memiliki bentang alam lembah perbukitan yang asri dan tanah vulkanik yang subur. Mayoritas wilayah kami berupa lahan pertanian produktif yang menopang ketahanan pangan dan komoditas hortikultura.',
     'Selain kekayaan alamnya, Desa Penusupan kaya akan nilai budaya dan tradisi gotong royong yang terus terjaga secara turun-temurun, berpadu harmonis dengan semangat inovasi dan digitalisasi desa modern.',
   ],
+  imageUrl: '/images/intro.webp',
   ctaLabel: 'Lihat Profil Lengkap',
   ctaHref: '/profile',
 };

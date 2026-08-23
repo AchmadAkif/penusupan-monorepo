@@ -17,6 +17,7 @@ export function HeroSection({
   eyebrow = DEFAULT_HERO_DATA.eyebrow,
   title = DEFAULT_HERO_DATA.title,
   subtitle = DEFAULT_HERO_DATA.subtitle,
+  imageUrl = DEFAULT_HERO_DATA.imageUrl,
   primaryCta = DEFAULT_HERO_DATA.primaryCta,
   secondaryCta = DEFAULT_HERO_DATA.secondaryCta,
 }: HeroSectionProps) {
@@ -110,7 +111,7 @@ export function HeroSection({
                 className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-white/15 aspect-4/3 bg-navy-light/40 backdrop-blur-sm group"
               >
                 <Image
-                  src="/images/hero-placeholder.svg"
+                  src={imageUrl}
                   alt="Panorama Desa Penusupan"
                   width={800}
                   height={600}
