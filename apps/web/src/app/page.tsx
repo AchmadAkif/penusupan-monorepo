@@ -62,6 +62,15 @@ export default async function HomePage() {
     viewCount: item.view_count || 0,
   }));
 
+  // Fetch Kepala Desa for the greeting section
+  const { data: headData } = await supabase
+    .from('village_officials')
+    .select('*')
+    .or('category.eq.pimpinan,hierarchy_level.eq.1')
+    .order('hierarchy_level', { ascending: true })
+    .limit(1)
+    .maybeSingle();
+
   return (
     <main className="min-h-screen bg-linen">
       {/* ── 1. Hero Section ── */}
@@ -71,7 +80,11 @@ export default async function HomePage() {
       <StatsBar />
 
       {/* ── 3. Sambutan Kepala Desa (Head of Village Greeting) ── */}
-      <VillageHeadGreeting />
+      <VillageHeadGreeting
+        name={headData?.name}
+        role={headData?.role}
+        photoUrl={headData?.image_url || undefined}
+      />
 
       {/* ── 4. Profil Singkat Desa (Short Profile) ── */}
       <VillageProfileIntro />

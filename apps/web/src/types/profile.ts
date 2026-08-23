@@ -21,15 +21,15 @@ export interface OfficialItem {
 }
 
 export interface VillageOrgStructure {
-  head: OfficialItem;
-  secretary: OfficialItem;
+  head?: OfficialItem | null;
+  secretary?: OfficialItem | null;
   kaurs: OfficialItem[];
   kasis: OfficialItem[];
   kaduses: OfficialItem[];
 }
 
 export interface OrgChartSectionProps {
-  data?: VillageOrgStructure;
+  data?: VillageOrgStructure | null;
   className?: string;
 }
 

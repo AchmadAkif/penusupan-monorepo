@@ -27,10 +27,7 @@ import type {
   GeographyMetricItem,
 } from '@/types/home';
 import type { NewsItem } from '@/types/news';
-import type {
-  VillageOrgStructure,
-  VillageHistoryData,
-} from '@/types/profile';
+import type { VillageHistoryData } from '@/types/profile';
 import type { BusinessItem } from '@/types/businesses';
 
 
@@ -234,109 +231,7 @@ export const DEFAULT_GEOGRAPHY_METRICS: GeographyMetricItem[] = [
 
 
 
-// ── 9. Organizational Structure Default Data (Real Official Data) ──
-export const DEFAULT_ORG_STRUCTURE: VillageOrgStructure = {
-  head: {
-    id: 'kades',
-    name: 'Budi Indarto',
-    role: 'Kepala Desa',
-    category: 'pimpinan',
-    photoUrl: '/images/village-head-placeholder.svg',
-    hierarchyLevel: 1,
-  },
-  secretary: {
-    id: 'sekdes',
-    name: 'Ovik Suprayitno',
-    role: 'Sekretaris Desa',
-    category: 'pimpinan',
-    hierarchyLevel: 2,
-  },
-  kaurs: [
-    {
-      id: 'kaur-1',
-      name: 'Jana',
-      role: 'Kaur Perencanaan',
-      category: 'sekretariat',
-      hierarchyLevel: 3,
-    },
-    {
-      id: 'kaur-2',
-      name: 'Heli Susanto',
-      role: 'Kaur Tata Usaha & Umum',
-      category: 'sekretariat',
-      hierarchyLevel: 3,
-    },
-    {
-      id: 'kaur-3',
-      name: 'Santi Wiji Jayanti, S.Pd',
-      role: 'Kaur Keuangan',
-      category: 'sekretariat',
-      hierarchyLevel: 3,
-    },
-  ],
-  kasis: [
-    {
-      id: 'kasi-1',
-      name: 'Baidowi',
-      role: 'Kasi Pemerintahan',
-      category: 'teknis',
-      hierarchyLevel: 3,
-    },
-    {
-      id: 'kasi-2',
-      name: 'Nurwahyuni',
-      role: 'Kasi Pelayanan',
-      category: 'teknis',
-      hierarchyLevel: 3,
-    },
-    {
-      id: 'kasi-3',
-      name: 'Yunita Septa Dewi',
-      role: 'Kasi Kesejahteraan',
-      category: 'teknis',
-      hierarchyLevel: 3,
-    },
-  ],
-  kaduses: [
-    {
-      id: 'kadus-1',
-      name: 'Suwadi',
-      role: 'Kadus I',
-      category: 'kewilayahan',
-      hierarchyLevel: 4,
-    },
-    {
-      id: 'kadus-2',
-      name: 'Slamet',
-      role: 'Kadus II',
-      category: 'kewilayahan',
-      hierarchyLevel: 4,
-    },
-    {
-      id: 'kadus-3',
-      name: 'Miswanto',
-      role: 'Kadus III',
-      category: 'kewilayahan',
-      hierarchyLevel: 4,
-    },
-    {
-      id: 'kadus-4',
-      name: 'Rudi Darmawan',
-      role: 'Kadus IV',
-      category: 'kewilayahan',
-      hierarchyLevel: 4,
-    },
-    {
-      id: 'kadus-5',
-      name: 'Tanton Riyo Fernandi',
-      role: 'Kadus V',
-      category: 'kewilayahan',
-      hierarchyLevel: 4,
-    },
-  ],
-};
-
-// ── 10. Village History Default Narrative ──
+// ── 9. Village History Default Narrative ──
 export const DEFAULT_VILLAGE_HISTORY: VillageHistoryData = {
   title: 'Menelusuri Jejak Langkah & Warisan Leluhur',
   subtitle:
