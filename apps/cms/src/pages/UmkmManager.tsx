@@ -18,6 +18,7 @@ import { supabase } from '../lib/supabase';
 import type { LocalBusiness } from '../types/umkm';
 import { UmkmTable } from '../components/umkm/UmkmTable';
 import { DeleteUmkmDialog } from '../components/umkm/DeleteUmkmDialog';
+import { useDusuns } from '../hooks/useDusuns';
 
 const UMKM_CATEGORIES = [
   'Semua Kategori',
@@ -29,17 +30,9 @@ const UMKM_CATEGORIES = [
   'Lainnya',
 ];
 
-const DUSUN_LIST = [
-  'Semua Dusun',
-  'Dusun I',
-  'Dusun II',
-  'Dusun III',
-  'Dusun IV',
-  'Dusun V',
-];
-
 export const UmkmManagerPage: React.FC = () => {
   const navigate = useNavigate();
+  const { data: dusunList = [] } = useDusuns();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('Semua Kategori');
   const [selectedDusun, setSelectedDusun] = useState<string>('Semua Dusun');
@@ -252,9 +245,12 @@ export const UmkmManagerPage: React.FC = () => {
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#CA8A04' },
               }}
             >
-              {DUSUN_LIST.map((dusun) => (
-                <MenuItem key={dusun} value={dusun} sx={{ fontSize: '0.875rem', fontWeight: 500 }}>
-                  {dusun}
+              <MenuItem value="Semua Dusun" sx={{ fontSize: '0.875rem', fontWeight: 500 }}>
+                Semua Dusun
+              </MenuItem>
+              {dusunList.map((dusun) => (
+                <MenuItem key={dusun.id || dusun.name} value={dusun.name} sx={{ fontSize: '0.875rem', fontWeight: 500 }}>
+                  {dusun.name}
                 </MenuItem>
               ))}
             </Select>

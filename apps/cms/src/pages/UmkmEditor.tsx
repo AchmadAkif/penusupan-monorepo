@@ -32,6 +32,8 @@ import { supabase } from '../lib/supabase';
 import type { LocalBusiness, CreateLocalBusinessInput, UpdateLocalBusinessInput } from '../types/umkm';
 import { ImageDropzone, type ImageItem } from '../components/umkm/ImageDropzone';
 
+import { useDusuns, DEFAULT_DUSUN_NAMES } from '../hooks/useDusuns';
+
 const UMKM_CATEGORIES = [
   'Kuliner',
   'Kerajinan',
@@ -41,19 +43,12 @@ const UMKM_CATEGORIES = [
   'Lainnya',
 ];
 
-const DUSUN_LIST = [
-  'Dusun I',
-  'Dusun II',
-  'Dusun III',
-  'Dusun IV',
-  'Dusun V',
-];
-
 export const UmkmEditorPage: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const isEditing = Boolean(id);
   const queryClient = useQueryClient();
+  const { data: dusunList = [] } = useDusuns();
 
   // Form State
   const [name, setName] = useState('');
@@ -62,7 +57,7 @@ export const UmkmEditorPage: React.FC = () => {
   const [description, setDescription] = useState('');
   const [productsSold, setProductsSold] = useState<string[]>([]);
   const [currentProductInput, setCurrentProductInput] = useState('');
-  const [dusun, setDusun] = useState(DUSUN_LIST[0]);
+  const [dusun, setDusun] = useState(DEFAULT_DUSUN_NAMES[0]);
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
   const [whatsappNumber, setWhatsappNumber] = useState('');
@@ -107,7 +102,7 @@ export const UmkmEditorPage: React.FC = () => {
       setCategory(existingBusiness.category || UMKM_CATEGORIES[0]);
       setDescription(existingBusiness.description || '');
       setProductsSold(existingBusiness.products_sold || []);
-      setDusun(existingBusiness.dusun || DUSUN_LIST[0]);
+      setDusun(existingBusiness.dusun || DEFAULT_DUSUN_NAMES[0]);
       setAddress(existingBusiness.address || '');
       setPhone(existingBusiness.phone || '');
       setWhatsappNumber(existingBusiness.whatsapp_number || '');
@@ -662,9 +657,9 @@ export const UmkmEditorPage: React.FC = () => {
                     '&.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: '#CA8A04' },
                   }}
                 >
-                  {DUSUN_LIST.map((d) => (
-                    <MenuItem key={d} value={d} sx={{ fontWeight: 500 }}>
-                      {d}
+                  {dusunList.map((d) => (
+                    <MenuItem key={d.id || d.name} value={d.name} sx={{ fontWeight: 500 }}>
+                      {d.name}
                     </MenuItem>
                   ))}
                 </Select>
