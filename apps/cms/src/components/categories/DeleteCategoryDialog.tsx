@@ -69,10 +69,12 @@ export const DeleteCategoryDialog: React.FC<DeleteCategoryDialogProps> = ({
       onClose={mutation.isPending ? undefined : onClose}
       maxWidth="xs"
       fullWidth
-      PaperProps={{
-        sx: {
-          borderRadius: '24px',
-          p: 1.5,
+      slotProps={{
+        paper: {
+          sx: {
+            borderRadius: '24px',
+            p: 1.5,
+          },
         },
       }}
     >

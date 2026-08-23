@@ -147,10 +147,12 @@ export const CategoryFormDialog: React.FC<CategoryFormDialogProps> = ({
       onClose={mutation.isPending ? undefined : onClose}
       maxWidth="sm"
       fullWidth
-      PaperProps={{
-        sx: {
-          borderRadius: '24px',
-          p: 1,
+      slotProps={{
+        paper: {
+          sx: {
+            borderRadius: '24px',
+            p: 1,
+          },
         },
       }}
     >
