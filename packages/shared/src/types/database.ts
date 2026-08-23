@@ -26,12 +26,18 @@ export interface VillageInfo {
   address: string;
 }
 
+export type OfficialCategory = 'pimpinan' | 'sekretariat' | 'teknis' | 'kewilayahan';
+
 export interface VillageOfficial {
   id: string;
   name: string;
   role: string;
-  image_url: string;
+  category: OfficialCategory;
+  image_url: string | null;
   hierarchy_level: number;
+  order_index: number;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface LocalBusiness {

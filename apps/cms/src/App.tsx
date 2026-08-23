@@ -1,7 +1,6 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { ThemeProvider, CssBaseline, Box, Typography } from '@mui/material';
+import { ThemeProvider, CssBaseline } from '@mui/material';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { store } from './store/store';
 import { cmsTheme } from './theme/theme';
@@ -15,6 +14,7 @@ import { ArticlesManagerPage } from './pages/ArticlesManager';
 import { ArticleEditorPage } from './pages/ArticleEditor';
 import { UmkmManagerPage } from './pages/UmkmManager';
 import { UmkmEditorPage } from './pages/UmkmEditor';
+import { OfficialsManagerPage } from './pages/OfficialsManager';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,18 +24,6 @@ const queryClient = new QueryClient({
     },
   },
 });
-
-// Placeholder for yet-to-be-built pages to ensure seamless navigation
-const PlaceholderPage: React.FC<{ title: string }> = ({ title }) => (
-  <Box sx={{ p: 4 }}>
-    <Typography variant="h4" sx={{ fontWeight: 800, color: '#1E1B4B', mb: 1 }}>
-      {title}
-    </Typography>
-    <Typography variant="body1" sx={{ color: '#78716C' }}>
-      Modul manajemen {title} sedang dalam pengembangan.
-    </Typography>
-  </Box>
-);
 
 export default function App() {
   return (
@@ -66,7 +54,7 @@ export default function App() {
                           <Route path="/businesses/edit/:id" element={<UmkmEditorPage />} />
                           <Route path="/umkm" element={<Navigate to="/businesses" replace />} />
                           <Route path="/umkm/new" element={<Navigate to="/businesses/new" replace />} />
-                          <Route path="/officials" element={<PlaceholderPage title="Perangkat Desa" />} />
+                          <Route path="/officials" element={<OfficialsManagerPage />} />
                           <Route path="*" element={<Navigate to="/" replace />} />
                         </Routes>
                       </CmsLayout>
