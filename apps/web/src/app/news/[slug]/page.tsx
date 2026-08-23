@@ -152,8 +152,8 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
 
           {/* ════ LEFT COLUMN: ARTICLE CONTENT (8 Cols) ════ */}
-          <main className="lg:col-span-8 space-y-8">
-            <article className="rounded-3xl bg-white border border-stone-200/90 p-6 sm:p-10 shadow-xs space-y-8">
+          <main className="lg:col-span-8 space-y-8 min-w-0 w-full">
+            <article className="rounded-3xl bg-white border border-stone-200/90 p-6 sm:p-10 shadow-xs space-y-8 overflow-hidden min-w-0">
 
               {/* Category & Title Header */}
               <div className="space-y-4">
@@ -206,7 +206,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
               </div>
 
               {/* Article Paragraphs Body */}
-              <div className="space-y-5 text-stone-700 text-base sm:text-lg leading-relaxed font-body">
+              <div className="min-w-0 max-w-full break-words [overflow-wrap:anywhere] text-stone-700 text-base sm:text-lg leading-relaxed font-body space-y-4 [&_p]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:text-navy [&_h1]:mt-6 [&_h1]:mb-3 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-navy [&_h2]:mt-5 [&_h2]:mb-2 [&_h3]:text-lg [&_h3]:font-bold [&_h3]:text-navy [&_h3]:mt-4 [&_h3]:mb-2 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-4 [&_li]:mb-1 [&_blockquote]:border-l-4 [&_blockquote]:border-gold [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:my-4 [&_blockquote]:text-stone-600 [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-xl [&_img]:my-4 [&_pre]:bg-stone-900 [&_pre]:text-stone-100 [&_pre]:p-4 [&_pre]:rounded-xl [&_pre]:overflow-x-auto [&_pre]:max-w-full [&_a]:text-gold-dark [&_a]:underline">
                 {article.content ? (
                   <div dangerouslySetInnerHTML={{ __html: article.content }} />
                 ) : (
@@ -260,7 +260,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
           </main>
 
           {/* ════ RIGHT COLUMN: SIDEBAR (4 Cols) ════ */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-4 min-w-0 w-full">
             <NewsSidebar
               categories={categories}
               popularArticles={relatedArticles}

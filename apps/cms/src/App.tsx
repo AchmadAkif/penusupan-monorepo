@@ -11,6 +11,8 @@ import { CmsLayout } from './components/layout/CmsLayout';
 import { DashboardPage } from './pages/Dashboard';
 import { LoginPage } from './pages/Login';
 import { CategoriesManagerPage } from './pages/CategoriesManager';
+import { ArticlesManagerPage } from './pages/ArticlesManager';
+import { ArticleEditorPage } from './pages/ArticleEditor';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -53,7 +55,9 @@ export default function App() {
                       <CmsLayout>
                         <Routes>
                           <Route path="/" element={<DashboardPage />} />
-                          <Route path="/articles" element={<PlaceholderPage title="Berita & Artikel" />} />
+                          <Route path="/articles" element={<ArticlesManagerPage />} />
+                          <Route path="/articles/new" element={<ArticleEditorPage />} />
+                          <Route path="/articles/edit/:id" element={<ArticleEditorPage />} />
                           <Route path="/categories" element={<CategoriesManagerPage />} />
                           <Route path="/businesses" element={<PlaceholderPage title="UMKM Desa" />} />
                           <Route path="/announcements" element={<PlaceholderPage title="Pengumuman" />} />
