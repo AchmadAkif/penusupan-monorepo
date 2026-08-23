@@ -18,8 +18,6 @@ import {
   Newspaper,
   Tags,
   Store,
-  Megaphone,
-  Landmark,
   Users,
   LogOut,
 } from 'lucide-react';
@@ -37,8 +35,6 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Berita & Artikel', path: '/articles', icon: Newspaper },
   { label: 'Kategori Berita', path: '/categories', icon: Tags },
   { label: 'UMKM Desa', path: '/businesses', icon: Store },
-  { label: 'Pengumuman', path: '/announcements', icon: Megaphone },
-  { label: 'Profil Desa', path: '/profile', icon: Landmark },
   { label: 'Perangkat Desa', path: '/officials', icon: Users },
 ];
 

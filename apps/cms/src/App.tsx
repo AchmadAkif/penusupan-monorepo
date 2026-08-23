@@ -66,9 +66,6 @@ export default function App() {
                           <Route path="/businesses/edit/:id" element={<UmkmEditorPage />} />
                           <Route path="/umkm" element={<Navigate to="/businesses" replace />} />
                           <Route path="/umkm/new" element={<Navigate to="/businesses/new" replace />} />
-                          <Route path="/umkm/edit/:id" element={<UmkmEditorPage />} />
-                          <Route path="/announcements" element={<PlaceholderPage title="Pengumuman" />} />
-                          <Route path="/profile" element={<PlaceholderPage title="Profil Desa" />} />
                           <Route path="/officials" element={<PlaceholderPage title="Perangkat Desa" />} />
                           <Route path="*" element={<Navigate to="/" replace />} />
                         </Routes>
