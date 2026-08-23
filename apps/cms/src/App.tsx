@@ -1,23 +1,71 @@
-import { useEffect, useState } from 'react'
-import { supabase } from './lib/supabase'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { store } from './store/store';
+import { cmsTheme } from './theme/theme';
+import { AuthListener } from './components/auth/AuthListener';
+import { ProtectedRoute } from './components/auth/ProtectedRoute';
+import { CmsLayout } from './components/layout/CmsLayout';
+import { DashboardPage } from './pages/Dashboard';
+import { LoginPage } from './pages/Login';
+import { CategoriesManagerPage } from './pages/CategoriesManager';
+import { ArticlesManagerPage } from './pages/ArticlesManager';
+import { ArticleEditorPage } from './pages/ArticleEditor';
+import { UmkmManagerPage } from './pages/UmkmManager';
+import { UmkmEditorPage } from './pages/UmkmEditor';
+import { OfficialsManagerPage } from './pages/OfficialsManager';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+    },
+  },
+});
 
 export default function App() {
-  const [articles, setArticles] = useState([])
-
-  useEffect(() => {
-    async function getArticles() {
-      const { data: articles } = await supabase.from('articles').select()
-      setArticles(articles)
-    }
-
-    getArticles()
-  }, [])
-
   return (
-    <ul>
-      {articles.map((article) => (
-        <li key={article.id}>{article.title}</li>
-      ))}
-    </ul>
-  )
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={cmsTheme}>
+          <CssBaseline />
+          <AuthListener>
+            <BrowserRouter>
+              <Routes>
+                {/* Public Authentication Route */}
+                <Route path="/login" element={<LoginPage />} />
+
+                {/* Protected CMS Routes */}
+                <Route
+                  path="/*"
+                  element={
+                    <ProtectedRoute>
+                      <CmsLayout>
+                        <Routes>
+                          <Route path="/" element={<DashboardPage />} />
+                          <Route path="/articles" element={<ArticlesManagerPage />} />
+                          <Route path="/articles/new" element={<ArticleEditorPage />} />
+                          <Route path="/articles/edit/:id" element={<ArticleEditorPage />} />
+                          <Route path="/categories" element={<CategoriesManagerPage />} />
+                          <Route path="/businesses" element={<UmkmManagerPage />} />
+                          <Route path="/businesses/new" element={<UmkmEditorPage />} />
+                          <Route path="/businesses/edit/:id" element={<UmkmEditorPage />} />
+                          <Route path="/umkm" element={<Navigate to="/businesses" replace />} />
+                          <Route path="/umkm/new" element={<Navigate to="/businesses/new" replace />} />
+                          <Route path="/officials" element={<OfficialsManagerPage />} />
+                          <Route path="*" element={<Navigate to="/" replace />} />
+                        </Routes>
+                      </CmsLayout>
+                    </ProtectedRoute>
+                  }
+                />
+              </Routes>
+            </BrowserRouter>
+          </AuthListener>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </Provider>
+  );
 }
