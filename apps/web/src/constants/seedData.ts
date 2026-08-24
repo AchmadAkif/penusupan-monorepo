@@ -27,10 +27,7 @@ import type {
   GeographyMetricItem,
 } from '@/types/home';
 import type { NewsItem } from '@/types/news';
-import type {
-  VillageOrgStructure,
-  VillageHistoryData,
-} from '@/types/profile';
+import type { VillageHistoryData } from '@/types/profile';
 import type { BusinessItem } from '@/types/businesses';
 
 
@@ -40,6 +37,7 @@ export const DEFAULT_HERO_DATA: Required<HeroSectionProps> = {
   title: 'Harmoni Tradisi, Menuju Desa Berdaya & Sejahtera',
   subtitle:
     'Selamat datang di portal informasi resmi Desa Penusupan, Kecamatan Pejawaran, Kabupaten Banjarnegara. Temukan layanan, potensi UMKM, berita terkini, dan profil desa.',
+  imageUrl: '/images/DSC04016.webp',
   primaryCta: { label: 'Jelajahi Profil', href: '/profile' },
   secondaryCta: { label: 'Potensi UMKM', href: '/businesses' },
 };
@@ -99,6 +97,7 @@ export const DEFAULT_VILLAGE_PROFILE: VillageProfileData = {
     'Desa Penusupan memiliki bentang alam lembah perbukitan yang asri dan tanah vulkanik yang subur. Mayoritas wilayah kami berupa lahan pertanian produktif yang menopang ketahanan pangan dan komoditas hortikultura.',
     'Selain kekayaan alamnya, Desa Penusupan kaya akan nilai budaya dan tradisi gotong royong yang terus terjaga secara turun-temurun, berpadu harmonis dengan semangat inovasi dan digitalisasi desa modern.',
   ],
+  imageUrl: '/images/intro.webp',
   ctaLabel: 'Lihat Profil Lengkap',
   ctaHref: '/profile',
 };
@@ -232,109 +231,7 @@ export const DEFAULT_GEOGRAPHY_METRICS: GeographyMetricItem[] = [
 
 
 
-// ── 9. Organizational Structure Default Data (Real Official Data) ──
-export const DEFAULT_ORG_STRUCTURE: VillageOrgStructure = {
-  head: {
-    id: 'kades',
-    name: 'Budi Indarto',
-    role: 'Kepala Desa',
-    category: 'pimpinan',
-    photoUrl: '/images/village-head-placeholder.svg',
-    hierarchyLevel: 1,
-  },
-  secretary: {
-    id: 'sekdes',
-    name: 'Ovik Suprayitno',
-    role: 'Sekretaris Desa',
-    category: 'pimpinan',
-    hierarchyLevel: 2,
-  },
-  kaurs: [
-    {
-      id: 'kaur-1',
-      name: 'Jana',
-      role: 'Kaur Perencanaan',
-      category: 'sekretariat',
-      hierarchyLevel: 3,
-    },
-    {
-      id: 'kaur-2',
-      name: 'Heli Susanto',
-      role: 'Kaur Tata Usaha & Umum',
-      category: 'sekretariat',
-      hierarchyLevel: 3,
-    },
-    {
-      id: 'kaur-3',
-      name: 'Santi Wiji Jayanti, S.Pd',
-      role: 'Kaur Keuangan',
-      category: 'sekretariat',
-      hierarchyLevel: 3,
-    },
-  ],
-  kasis: [
-    {
-      id: 'kasi-1',
-      name: 'Baidowi',
-      role: 'Kasi Pemerintahan',
-      category: 'teknis',
-      hierarchyLevel: 3,
-    },
-    {
-      id: 'kasi-2',
-      name: 'Nurwahyuni',
-      role: 'Kasi Pelayanan',
-      category: 'teknis',
-      hierarchyLevel: 3,
-    },
-    {
-      id: 'kasi-3',
-      name: 'Yunita Septa Dewi',
-      role: 'Kasi Kesejahteraan',
-      category: 'teknis',
-      hierarchyLevel: 3,
-    },
-  ],
-  kaduses: [
-    {
-      id: 'kadus-1',
-      name: 'Suwadi',
-      role: 'Kadus I',
-      category: 'kewilayahan',
-      hierarchyLevel: 4,
-    },
-    {
-      id: 'kadus-2',
-      name: 'Slamet',
-      role: 'Kadus II',
-      category: 'kewilayahan',
-      hierarchyLevel: 4,
-    },
-    {
-      id: 'kadus-3',
-      name: 'Miswanto',
-      role: 'Kadus III',
-      category: 'kewilayahan',
-      hierarchyLevel: 4,
-    },
-    {
-      id: 'kadus-4',
-      name: 'Rudi Darmawan',
-      role: 'Kadus IV',
-      category: 'kewilayahan',
-      hierarchyLevel: 4,
-    },
-    {
-      id: 'kadus-5',
-      name: 'Tanton Riyo Fernandi',
-      role: 'Kadus V',
-      category: 'kewilayahan',
-      hierarchyLevel: 4,
-    },
-  ],
-};
-
-// ── 10. Village History Default Narrative ──
+// ── 9. Village History Default Narrative ──
 export const DEFAULT_VILLAGE_HISTORY: VillageHistoryData = {
   title: 'Menelusuri Jejak Langkah & Warisan Leluhur',
   subtitle:
@@ -344,7 +241,7 @@ export const DEFAULT_VILLAGE_HISTORY: VillageHistoryData = {
     'Seiring berjalannya waktu dan pergantian generasi, Desa Penusupan terus bertransformasi dari sebuah permukiman agraris tradisional menjadi desa yang mandiri, berdaya, dan terbuka terhadap kemajuan. Nilai-nilai kearifan lokal seperti gotong royong, musyawarah mufakat, serta penghormatan terhadap alam tetap menjadi fondasi utama yang mendasari setiap gerak langkah pembangunan desa.',
     'Saat ini, pemerintah desa bersama seluruh elemen masyarakat dan tokoh adat terus mendokumentasikan serta menghimpun arsip sejarah resmi desa secara komprehensif, guna memastikan warisan nilai luhur ini dapat terus dipelajari dan diwariskan dengan bangga kepada generasi mendatang.',
   ],
-  imageUrl: '/images/village-history.svg',
+  imageUrl: '/images/history.webp',
   imageCaption: 'Bentang alam lembah dan harmoni kehidupan masyarakat Desa Penusupan.',
   quote:
     'Menjaga warisan luhur para pendahulu, melangkah bersama membangun masa depan desa yang berdaulat dan sejahtera.',

@@ -15,6 +15,7 @@ import type { GeographySectionProps } from '@/types/home';
 
 export function GeographySection({
   metrics = DEFAULT_GEOGRAPHY_METRICS,
+  imageUrl = '/images/geo.webp',
   ctaLabel = 'Lihat Peta & Tata Ruang Lengkap',
   ctaHref = '/profile#geografi',
   className,
@@ -63,7 +64,7 @@ export function GeographySection({
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-stone-200/80 aspect-5/4 group">
               <Image
-                src="/images/village-topography-placeholder.svg"
+                src={imageUrl}
                 alt="Peta Topografi dan Elevasi Desa Penusupan"
                 width={600}
                 height={500}

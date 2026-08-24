@@ -90,7 +90,7 @@ export function VillageProfileIntro({
               {/* Main Image */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-stone-100 aspect-4/3 group">
                 <Image
-                  src="/images/village-landscape-placeholder.svg"
+                  src={profile.imageUrl || '/images/intro.webp'}
                   alt="Lanskap Perbukitan Desa Penusupan"
                   width={600}
                   height={400}

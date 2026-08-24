@@ -18,6 +18,7 @@ export interface HeroSectionProps {
   title?: string;
   subtitle?: string;
   eyebrow?: string;
+  imageUrl?: string;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
 }
@@ -38,6 +39,7 @@ export interface VillageProfileData {
   title: string;
   description: string;
   paragraphs: string[];
+  imageUrl?: string;
   ctaLabel?: string;
   ctaHref?: string;
 }
@@ -99,6 +101,7 @@ export interface GeographyMetricItem {
 
 export interface GeographySectionProps {
   metrics?: GeographyMetricItem[];
+  imageUrl?: string;
   ctaLabel?: string;
   ctaHref?: string;
   className?: string;

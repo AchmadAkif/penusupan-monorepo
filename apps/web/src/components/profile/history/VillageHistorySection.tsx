@@ -50,25 +50,23 @@ export function VillageHistorySection({
             variants={slideInLeft}
             className="lg:col-span-5 space-y-6"
           >
-            {/* Framed Image Card */}
-            <div className="group relative rounded-3xl bg-navy p-2 sm:p-3 shadow-xl overflow-hidden border border-navy/20">
-              <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-stone-900">
-                <Image
-                  src={history.imageUrl}
-                  alt="Ilustrasi Sejarah Desa Penusupan"
-                  fill
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                />
-                
-                {/* Subtle Amber Vignette overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-navy/80 via-transparent to-transparent pointer-events-none" />
+            {/* Clean Image Card */}
+            <div className="group relative rounded-3xl overflow-hidden shadow-xl border border-stone-200/80 aspect-4/3 bg-stone-100">
+              <Image
+                src={history.imageUrl}
+                alt="Ilustrasi Sejarah Desa Penusupan"
+                fill
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+              
+              {/* Subtle Vignette overlay */}
+              <div className="absolute inset-0 bg-linear-to-t from-navy/70 via-transparent to-transparent pointer-events-none" />
 
-                {/* Location Badge */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-navy/80 backdrop-blur-md text-white text-xs border border-white/10">
-                  <MapPin size={13} className="text-gold shrink-0" />
-                  <span className="truncate font-medium">{history.imageCaption}</span>
-                </div>
+              {/* Location Badge */}
+              <div className="absolute bottom-3 left-3 right-3 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-navy/80 backdrop-blur-md text-white text-xs border border-white/10">
+                <MapPin size={13} className="text-gold shrink-0" />
+                <span className="truncate font-medium">{history.imageCaption}</span>
               </div>
             </div>
 

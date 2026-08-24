@@ -5,7 +5,7 @@ import { OfficialCard } from './OfficialCard';
 import type { OfficialItem } from '@/types/profile';
 
 interface SecretariatGroupCardProps {
-  secretary: OfficialItem;
+  secretary?: OfficialItem | null;
   kaurs: OfficialItem[];
   className?: string;
 }
@@ -33,13 +33,15 @@ export function SecretariatGroupCard({
       </div>
 
       {/* ── Sekretaris Desa (Centered) ── */}
-      <div className="flex flex-col items-center mb-6">
-        <OfficialCard
-          official={secretary}
-          size="md"
-          className="max-w-xs w-full"
-        />
-      </div>
+      {secretary && (
+        <div className="flex flex-col items-center mb-6">
+          <OfficialCard
+            official={secretary}
+            size="md"
+            className="max-w-xs w-full"
+          />
+        </div>
+      )}
 
       {/* ── 3 Kepala Urusan (Kaur Sub-grid) ── */}
       <div className="space-y-4">
